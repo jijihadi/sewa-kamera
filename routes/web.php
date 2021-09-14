@@ -20,5 +20,15 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware('is_admin');
-
+Route::group(['middleware' => ['auth','is_admin']], function () {
+    // dash
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    
+    // 
+    Route::get('/gitars', 'Admin\GitarsController@index')->name('gitars');
+    Route::get('/gitars/add', 'Admin\GitarsController@add')->name('gitars.add');
+    Route::post('/gitars/insert', 'Admin\GitarsController@insert')->name('gitars.insert');
+    Route::get('/gitars/edit/{id}', 'Admin\GitarsController@edit')->name('gitars.edit');
+    Route::post('/gitars/update/{id}', 'Admin\GitarsController@update')->name('gitars.update');
+    Route::get('/gitars/delete/{id}', 'Admin\GitarsController@delete')->name('gitars.delete');
+});
