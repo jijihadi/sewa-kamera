@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{ url('/') }}/admin-assets/css/demo_1/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ url('/') }}/admin-assets/images/favicon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.2/b-2.0.0/datatables.min.css"/>
 </head>
 
 <body>
@@ -353,6 +355,15 @@
     <script src="{{ url('/') }}/admin-assets/js/dashboard.js"></script>
     <script src="{{ url('/') }}/admin-assets/js/datepicker.js"></script>
     <!-- end custom js for this page -->
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.2/b-2.0.0/datatables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // datatable
+            $('#myTable').DataTable();
+        });
+    </script>
 </body>
 
 </html>

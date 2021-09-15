@@ -28,7 +28,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('merk')}}" class="nav-link">
                 <i class="link-icon" data-feather="tag"></i>
                 <span class="link-title">Master Merk</span>
             </a>
