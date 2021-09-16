@@ -22,7 +22,7 @@
         </li>
         <li class="nav-item nav-category">master data</li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('kamera')}}" class="nav-link">
                 <i class="link-icon" data-feather="camera"></i>
                 <span class="link-title">Master Kamera</span>
             </a>
@@ -34,7 +34,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('user')}}" class="nav-link">
                 <i class="link-icon" data-feather="users"></i>
                 <span class="link-title">Master User</span>
             </a>

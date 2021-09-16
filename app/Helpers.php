@@ -1,5 +1,14 @@
 <?php 
 
+function namamerk( $id)
+{
+    $comm = DB::table("merks")
+        ->where("id_merk", $id) // Getting the Authenticated user id
+        ->get()->toArray();
+        // 
+    return $comm[0]->nama_merk;
+}
+
 function isActive($path)
 {
     return (Request::segment(2)==$path ) ? 'active' : '';

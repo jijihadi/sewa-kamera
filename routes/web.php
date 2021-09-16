@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MerkController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\KameraController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +34,22 @@ Route::group(['middleware' => ['auth','is_admin']], function () {
     Route::get('/admin/merk/edit/{id}', [MerkController::class, 'edit'])->name('merk.edit');
     Route::post('/admin/merk/update/{id}', [MerkController::class, 'update'])->name('merk.update');
     Route::get('/admin/merk/delete/{id}', [MerkController::class, 'destroy'])->name('merk.delete');
+    
+    // 
+    Route::get('/admin/user', [UserController::class, 'index'])->name('user');
+    Route::get('/admin/user/add', [UserController::class, 'create'])->name('user.add');
+    Route::post('/admin/user/insert', [UserController::class, 'store'])->name('user.insert');
+    Route::get('/admin/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/admin/user/update/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::get('/admin/user/delete/{id}', [UserController::class, 'destroy'])->name('user.delete');
+    
+    // 
+    Route::get('/admin/kamera', [KameraController::class, 'index'])->name('kamera');
+    Route::get('/admin/kamera/add', [KameraController::class, 'create'])->name('kamera.add');
+    Route::post('/admin/kamera/insert', [KameraController::class, 'store'])->name('kamera.insert');
+    Route::get('/admin/kamera/edit/{id}', [KameraController::class, 'edit'])->name('kamera.edit');
+    Route::post('/admin/kamera/update/{id}', [KameraController::class, 'update'])->name('kamera.update');
+    Route::get('/admin/kamera/delete/{id}', [KameraController::class, 'destroy'])->name('kamera.delete');
     
     // 
 });
