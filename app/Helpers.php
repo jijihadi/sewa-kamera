@@ -1,5 +1,10 @@
 <?php 
 
+function selectsama($ich, $nii){
+    if ($ich == $nii) {
+        return 'selected';
+    }
+}
 function namamerk( $id)
 {
     $comm = DB::table("merks")

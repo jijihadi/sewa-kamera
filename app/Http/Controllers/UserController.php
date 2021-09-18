@@ -102,7 +102,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        //
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],

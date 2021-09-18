@@ -44,7 +44,7 @@ class MerkController extends Controller
     {
         //
         $this->validate($request, [
-            'nama_merk' => 'required',
+            'nama_merk' => ['required', 'string', 'max:255']
         ]);
 
         //get post data
@@ -99,7 +99,7 @@ class MerkController extends Controller
         //
         //
         $this->validate($request, [
-            'nama_merk' => 'required',
+            'nama_merk' => ['required', 'string', 'max:255']
         ]);
 
         //get post data

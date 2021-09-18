@@ -358,11 +358,16 @@
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.2/b-2.0.0/datatables.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+
     <script>
         $(document).ready(function () {
             // datatable
             $('#myTable').DataTable();
+            // currency
+            $('#currency').mask('00.000.000', {reverse: true});
         });
+        
     </script>
 </body>
 
