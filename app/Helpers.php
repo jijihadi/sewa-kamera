@@ -1,10 +1,49 @@
 <?php 
 
+function statusbadge($ich){
+    switch ($ich) {
+        case '0':
+            return '<span class="badge badge-danger">Belum</span>';
+            break;
+            case '1':
+            return '<span class="badge badge-success">Sudah</span>';
+            break;
+    }
+}
+
 function selectsama($ich, $nii){
     if ($ich == $nii) {
         return 'selected';
     }
 }
+
+function namakamera( $id)
+{
+    $comm = DB::table("kameras")
+        ->where("id_kamera", $id) // Getting the Authenticated user id
+        ->get()->toArray();
+        // 
+    return $comm[0]->nama_kamera."/".$comm[0]->tipe_kamera;
+}
+
+function namaadmin( $id)
+{
+    $comm = DB::table("users")
+        ->where("id", $id) // Getting the Authenticated user id
+        ->get()->toArray();
+        // 
+    return $comm[0]->name;
+}
+
+function namacust( $id)
+{
+    $comm = DB::table("customers")
+        ->where("id_cust", $id) // Getting the Authenticated user id
+        ->get()->toArray();
+        // 
+    return $comm[0]->nama_cust;
+}
+
 function namamerk( $id)
 {
     $comm = DB::table("merks")
@@ -12,6 +51,15 @@ function namamerk( $id)
         ->get()->toArray();
         // 
     return $comm[0]->nama_merk;
+}
+
+function namajaminan( $id)
+{
+    $comm = DB::table("jaminans")
+        ->where("id_jaminan", $id) // Getting the Authenticated user id
+        ->get()->toArray();
+        // 
+    return strtoupper($comm[0]->jenis_jaminan)." dengan kode <span class='text-danger'><b>".$comm[0]->no_jaminan."</b></span>";
 }
 
 function isActive($path)

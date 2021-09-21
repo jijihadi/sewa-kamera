@@ -47,13 +47,13 @@
                                     <td>{{ ($m->is_admin == 1)? "Admin" : "User" }}</td>
                                     <td>
                                         <a href="{{ route('user.edit', $m->id) }}">
-                                            <button type="button" class="btn btn-success btn-icon">
+                                            <button type="button" class="btn btn-outline-success btn-icon">
                                                 <i class="link-icon" data-feather="edit-2"></i>
                                             </button>
                                         </a>
                                         <a onclick="return confirm('Hapus data {{ $m->name }}')"
                                             href="{{ route('user.delete', $m->id) }}">
-                                            <button type="button" class="btn btn-danger btn-icon">
+                                            <button type="button" class="btn btn-outline-danger btn-icon">
                                                 <i class="link-icon" data-feather="trash"></i>
                                             </button>
                                         </a>

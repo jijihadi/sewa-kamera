@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MerkController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KameraController;
+use App\Http\Controllers\SewaController;
+use App\Http\Controllers\KembaliController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,4 +54,18 @@ Route::group(['middleware' => ['auth','is_admin']], function () {
     Route::get('/admin/kamera/delete/{id}', [KameraController::class, 'destroy'])->name('kamera.delete');
     
     // 
+    Route::get('/admin/sewa', [SewaController::class, 'index'])->name('sewa');
+    Route::get('/admin/sewa/add', [SewaController::class, 'create'])->name('sewa.add');
+    Route::post('/admin/sewa/insert', [SewaController::class, 'store'])->name('sewa.insert');
+    Route::get('/admin/sewa/pick/{id}', [SewaController::class, 'pick'])->name('sewa.pick');
+    Route::post('/admin/sewa/update/{id}', [SewaController::class, 'update'])->name('sewa.update');
+    Route::get('/admin/sewa/delete/{id}', [SewaController::class, 'destroy'])->name('sewa.delete');
+    
+    // 
+    Route::get('/admin/kembali', [KembaliController::class, 'index'])->name('kembali');
+    Route::get('/admin/kembali/add/{id}', [KembaliController::class, 'create'])->name('kembali.add');
+    Route::post('/admin/kembali/insert/{id}', [KembaliController::class, 'store'])->name('kembali.insert');
+    Route::get('/admin/kembali/edit/{id}', [KembaliController::class, 'edit'])->name('kembali.edit');
+    Route::post('/admin/kembali/update/{id}', [KembaliController::class, 'update'])->name('kembali.update');
+    Route::get('/admin/kembali/delete/{id}', [KembaliController::class, 'destroy'])->name('kembali.delete');
 });

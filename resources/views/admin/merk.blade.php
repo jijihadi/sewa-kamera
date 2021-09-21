@@ -41,13 +41,13 @@
                                     <td>{{ $m->nama_merk }}</td>
                                     <td>
                                         <a href="{{ route('merk.edit', $m->id_merk) }}">
-                                            <button type="button" class="btn btn-success btn-icon">
+                                            <button type="button" class="btn btn-outline-success btn-icon">
                                                 <i class="link-icon" data-feather="edit-2"></i>
                                             </button>
                                         </a>
                                         <a onclick="return confirm('Hapus data {{ $m->nama_merk }}')"
                                             href="{{ route('merk.delete', $m->id_merk) }}">
-                                            <button type="button" class="btn btn-danger btn-icon">
+                                            <button type="button" class="btn btn-outline-danger btn-icon">
                                                 <i class="link-icon" data-feather="trash"></i>
                                             </button>
                                         </a>

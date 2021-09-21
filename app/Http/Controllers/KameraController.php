@@ -106,9 +106,9 @@ class KameraController extends Controller
     {
         //
         $data = Merk::all();
-        $post = Kamera::all();
+        $post = Kamera::find($id);
 
-        //  print_r($data);
+        //  dd($post);
         return view('admin.kamera_form', ['merk' => $data, 'post' => $post]);
     }
 

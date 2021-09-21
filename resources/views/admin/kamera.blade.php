@@ -32,6 +32,7 @@
                                 <th>#</th>
                                 <th>Nama Kamera</th>
                                 <th>Merk/Tipe</th>
+                                <th>Sisa Stok</th>
                                 <th>Harga</th>
                                 <th>Gambar</th>
                                 <th>#</th>
@@ -43,17 +44,18 @@
                                     <td>{{ @$loop->iteration }}</td>
                                     <td>{{ $m->nama_kamera }}</td>
                                     <td>{{ namamerk($m->merk_kamera) ."/". $m->tipe_kamera }}</td>
+                                    <td>{{ $m->stok }}</td>
                                     <td>{{ rupiah($m->harga_kamera) }}</td>
                                     <td>{{ $m->gambar_kamera }}</td>
                                     <td>
                                         <a href="{{ route('kamera.edit', $m->id_kamera) }}">
-                                            <button type="button" class="btn btn-success btn-icon">
+                                            <button type="button" class="btn btn-outline-success btn-icon">
                                                 <i class="link-icon" data-feather="edit-2"></i>
                                             </button>
                                         </a>
                                         <a onclick="return confirm('Hapus data {{ $m->nama_kamera }}')"
                                             href="{{ route('kamera.delete', $m->id_kamera) }}">
-                                            <button type="button" class="btn btn-danger btn-icon">
+                                            <button type="button" class="btn btn-outline-danger btn-icon">
                                                 <i class="link-icon" data-feather="trash"></i>
                                             </button>
                                         </a>

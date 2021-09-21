@@ -14,13 +14,13 @@
 @if(!empty($post))
     @foreach($post as $p )
         @php
-            $id = $p->id_kamera;
-            $nama = $p->nama_kamera;
-            $tipe = $p->tipe_kamera;
-            $merks = $p->merk_kamera;
-            $harga = $p->harga_kamera;
-            $stok = $p->stok;
-            $gambar = $p->gambar;
+            $id = $post->id_kamera;
+            $nama = $post->nama_kamera;
+            $tipe = $post->tipe_kamera;
+            $merks = $post->merk_kamera;
+            $harga = $post->harga_kamera;
+            $stok = $post->stok;
+            $gambar = $post->gambar;
         @endphp
     @endforeach
 @endif
@@ -29,7 +29,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-header row">
-                <h6 class="col-6"><i class="link-icon" data-feather="tag"></i> Form User</h6>
+                <h6 class="col-6"><i class="link-icon" data-feather="tag"></i> Form Kamera</h6>
 
             </div>
             <div class="card-body">
@@ -69,7 +69,7 @@
 
                 <fieldset>
                     <div class="form-group">
-                        <img src="{{ url('file_upload/img')."/".$p->gambar}}" alt="" style="max-height:200px; max-width:100%">
+                        <img src="{{ url('file_upload/img')."/".$gambar}}" alt="" style="max-height:200px; max-width:100%">
                         {{-- {{$gambar}} --}}
                     </div>
                     <div class="form-group">

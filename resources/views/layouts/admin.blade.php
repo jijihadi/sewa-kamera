@@ -24,6 +24,8 @@
     <link rel="shortcut icon" href="{{ url('/') }}/admin-assets/images/favicon.png" />
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.2/b-2.0.0/datatables.min.css"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -360,14 +362,69 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        
+    {{-- select2 --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" integrity="sha512-kq3FES+RuuGoBW3a9R2ELYKRywUEQv0wvPTItv3DSGqjpbNtGWVdvT8qwdKkqvPzT93jp8tSF4+oN4IeTEIlQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <script>
         $(document).ready(function () {
             // datatable
             $('#myTable').DataTable();
             // currency
-            $('#currency').mask('00.000.000', {reverse: true});
+            $('#currency').mask('00.000.000', {
+                reverse: true
+            });
+            $('#denda1').mask('00.000.000', {
+                reverse: true
+            });
+            $('#denda2').mask('00.000.000', {
+                reverse: true
+            });
+            $('#dendat').mask('00.000.000', {
+                reverse: true
+            });
+            // select2
+            $('#select2').select2({
+                theme: "bootstrap"
+            });
+            $('#select22').select2({
+                theme: "bootstrap"
+            });
+            $('#select222').select2({
+                theme: "bootstrap"
+            });
+            $('#jenis-sewa').select2({
+                theme: "bootstrap"
+            });
+
+            // custom stuff
+            var val = ""
+            $("#select22").on("change", function () {
+                // hitung harga
+                val = $(this).find('option:selected').data("harga");
+            });
+            $("#durasi").on("change", function () {
+                var dur = parseInt($(this).find('option:selected').val());
+                var final ="";
+                switch (dur) {
+                    case 6:
+                        final = parseInt(val) * 0.25;
+                        $("#currency").val(final);
+                        console.log(val);       
+                        console.log(final);       
+                        break;
+                    case 12:
+                        final = parseInt(val) * 0.5;
+                        $("#currency").val(final);
+                        break;
+                    case 24:
+                        final = parseInt(val) * 0.5;
+                        $("#currency").val(final);
+                        break;
+                }
+            });
         });
-        
     </script>
 </body>
 

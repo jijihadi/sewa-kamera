@@ -19,6 +19,7 @@ class CreateCustomersTable extends Migration
             $table->string('hp_cust');
             $table->string('email_cust');
             $table->text('alamat_cust');
+            $table->integer('status_cust')->default('0');
             $table->timestamps();
         });
     }
