@@ -27,6 +27,20 @@ class SewaController extends Controller
         //  dd($user);
         return view('admin.sewa', ['sewa' => $data]);
     }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function history()
+    {
+        //
+        $data = Sewa::all()->where('diambil', '3');
+
+        //  dd($user);
+        return view('admin.history_sewa', ['sewa' => $data]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -64,6 +78,14 @@ class SewaController extends Controller
 
         //get post data
         $postData = $request->all();
+
+        $comms = Kamera::find($postData['kamera_id'])->get()->toArray();
+        // cari id
+        $stok = $comms[0]["stok"];
+        $postDatax['stok'] = intval($stok) - 1;
+        
+        Kamera::find($idk)->update($postDatax);
+        
         // 
         $postData2['jenis_jaminan'] = $postData['jenis_jaminan'];
         $postData2['no_jaminan'] = $postData['no_jaminan'];
@@ -110,24 +132,7 @@ class SewaController extends Controller
      */
     public function pick($id)
     {   
-        //dapetin id kamera
-        $comm = Sewa::find($id)->get()->toArray();
-        // cari id
-        $idk = $comm[0]["kamera_id"];
-        $comms = Kamera::find($idk)->get()->toArray();
-        // cari id
-        $stok = $comms[0]["stok"];
-        $postDatax['stok'] = intval($stok) - 1;
         
-        // dd($postDatax);
-        // DB::enableQueryLog();
-            
-        Kamera::find($idk)->update($postDatax);
-        
-        // $query = DB::getQueryLog();
-        // $query = end($query);
-        // dd($query);
-
         $now = date('Y-m-d H:i:s');
         $postData = array();
         $postData['diambil'] = "1";

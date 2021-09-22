@@ -15,7 +15,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('sewa.history')}}" class="nav-link">
                 <i class="link-icon" data-feather="clipboard"></i>
                 <span class="link-title">Riwayat penyewaan</span>
             </a>

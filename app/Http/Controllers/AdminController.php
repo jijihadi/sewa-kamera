@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+
+use App\Models\Sewa;
+use App\Models\Kamera;
+use App\Models\Jaminan;
+use App\Models\User;
+use App\Models\Customer;
 
 class AdminController extends Controller
 {
@@ -13,8 +20,23 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $last10 = Sewa::orderBy('tanggal_sewa', 'desc')->limit('10')->get();
         //
-        return view('admin/index');
+        $trent = Sewa::all()->where(['diambil'=>'2'])->count();
+        $tall = Sewa::all()->count();
+        $tcust = Customer::all()->count();
+        // 
+        $mostrent = Sewa::select(DB::raw('MAX(kamera_id) AS most_kamera'))->groupby('kamera_id')->pluck('most_kamera');
+        $mostrent = namakamera($mostrent[0]);
+        
+        $newrent = Sewa::orderBy('tanggal_sewa', 'desc')->get();
+        $newrent = namakamera($newrent[0]['kamera_id']). ' oleh '. namacust($newrent[0]['cust_id']);
+
+        $mostloyal = Sewa::select(DB::raw('MAX(cust_id) AS most_loyal'))->groupby('cust_id')->pluck('most_loyal');
+        $mostloyal = namacust($mostloyal[0]);
+        // dd($mostloyal);
+        $data =  ['tall'=> $tall, 'trent'=>$trent, 'tcust'=>$tcust, 'mostrent'=>$mostrent, 'newrent'=>$newrent, 'mostloyal'=>$mostloyal, 'last10'=>$last10];
+        return view('admin/index',$data);
     }
 
     /**

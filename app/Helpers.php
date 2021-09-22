@@ -5,8 +5,11 @@ function statusbadge($ich){
         case '0':
             return '<span class="badge badge-danger">Belum</span>';
             break;
-            case '1':
+        case '1':
             return '<span class="badge badge-success">Sudah</span>';
+            break;
+        case '3':
+            return '<span class="badge badge-primary">Selesai</span>';
             break;
     }
 }

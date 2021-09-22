@@ -58,8 +58,10 @@ Route::group(['middleware' => ['auth','is_admin']], function () {
     Route::get('/admin/sewa/add', [SewaController::class, 'create'])->name('sewa.add');
     Route::post('/admin/sewa/insert', [SewaController::class, 'store'])->name('sewa.insert');
     Route::get('/admin/sewa/pick/{id}', [SewaController::class, 'pick'])->name('sewa.pick');
-    Route::post('/admin/sewa/update/{id}', [SewaController::class, 'update'])->name('sewa.update');
     Route::get('/admin/sewa/delete/{id}', [SewaController::class, 'destroy'])->name('sewa.delete');
+    // --
+    Route::get('/admin/history/', [SewaController::class, 'history'])->name('sewa.history');
+    Route::get('/admin/sewa/show/{$id}', [SewaController::class, 'show'])->name('sewa.show');
     
     // 
     Route::get('/admin/kembali', [KembaliController::class, 'index'])->name('kembali');
