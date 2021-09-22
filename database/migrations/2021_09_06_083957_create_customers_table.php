@@ -16,7 +16,7 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id_cust');
             $table->string('nama_cust');
-            $table->string('hp_cust');
+            $table->string('hp_cust')->default('0');
             $table->string('email_cust');
             $table->text('alamat_cust');
             $table->integer('status_cust')->default('0');
