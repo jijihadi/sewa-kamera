@@ -18,7 +18,7 @@ class CreateCustomersTable extends Migration
             $table->string('nama_cust');
             $table->string('hp_cust')->default('0');
             $table->string('email_cust');
-            $table->text('alamat_cust');
+            $table->text('alamat_cust')->default('0');
             $table->integer('status_cust')->default('0');
             $table->timestamps();
         });
