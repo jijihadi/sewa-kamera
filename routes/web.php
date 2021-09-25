@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\KameraController;
 use App\Http\Controllers\SewaController;
 use App\Http\Controllers\KembaliController;
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,4 +71,13 @@ Route::group(['middleware' => ['auth','is_admin']], function () {
     Route::get('/admin/kembali/edit/{id}', [KembaliController::class, 'edit'])->name('kembali.edit');
     Route::post('/admin/kembali/update/{id}', [KembaliController::class, 'update'])->name('kembali.update');
     Route::get('/admin/kembali/delete/{id}', [KembaliController::class, 'destroy'])->name('kembali.delete');
+    
+    // 
+    Route::get('/admin/customer', [CustomerController::class, 'index'])->name('customer');
+    Route::get('/admin/customer/add', [CustomerController::class, 'create'])->name('customer.add');
+    Route::post('/admin/customer/insert', [CustomerController::class, 'store'])->name('customer.insert');
+    Route::get('/admin/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
+    Route::post('/admin/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
+    Route::get('/admin/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('customer.delete');
+
 });

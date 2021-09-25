@@ -68,6 +68,7 @@ class SewaController extends Controller
         //
         $this->validate($request, [
             'tanggal_sewa' => ['required', 'string', 'max:255'],
+            'waktu_sewa' => ['required', 'string', 'max:255'],
             'cust_id' => ['required', 'integer'],
             'kamera_id' => ['required', 'integer'],
             'harga' => ['required'],
@@ -84,7 +85,7 @@ class SewaController extends Controller
         $stok = $comms[0]["stok"];
         $postDatax['stok'] = intval($stok) - 1;
         
-        Kamera::find($idk)->update($postDatax);
+        Kamera::find($postData['kamera_id'])->update($postDatax);
         
         // 
         $postData2['jenis_jaminan'] = $postData['jenis_jaminan'];
@@ -98,7 +99,7 @@ class SewaController extends Controller
         $postData = request()->except(['_token','jenis_jaminan', 'no_jaminan']);
         // 
         $postData['jaminan_id'] = $id;
-        $jam = date("H:i:s");
+        $jam = date("H:i:s", strtotime($postData['waktu_sewa'].":00"));
         $postData['tanggal_sewa'] = date("Y-m-d H:i:s", strtotime($postData['tanggal_sewa']." ".$jam));;
         $postData['tanggal_pesan'] = date('Y-m-d H:i:s');
         $postData['harga'] = bilanganbulat($postData['harga']);
@@ -140,7 +141,7 @@ class SewaController extends Controller
         
         Sewa::find($id)->update($postData);
         //store status message
-        Session::flash('msg', 'Kamera '. namakamera($idk).' Telah diambil pada '.tglindo($now).'!');
+        Session::flash('msg', 'Kamera Telah diambil pada '.tglindo($now).'!');
         
         return redirect()->route('sewa');
     }

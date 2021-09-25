@@ -72,29 +72,40 @@
                 <fieldset>
                     <div class="form-group">
                         <label for="name">Tanggal Sewa </label>
-                        <div class="input-group date datepicker" id="datePickerExample">
-                            <input type="text" name="tanggal_sewa" class="form-control"><span
-                                class="input-group-addon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg></span>
+                        <div class="col-12 row">
+                            <div class="input-group date datepicker col-8 mr-4" id="datePickerExample">
+                                <input type="text" name="tanggal_sewa" class="form-control"><span
+                                    class="input-group-addon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-calendar">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg></span>
+                            </div>
+                            <div class="input-group date timepicker col-3" id="datetimepickerExample" data-target-input="nearest">
+                                <input type="text" class="form-control timepicker" name="waktu_sewa" data-target="#datetimepickerExample">
+                                <div class="input-group-append" data-target="#datetimepickerExample" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name">Customer</label>
-                        <select class="select2 form-control" name="cust_id" id="select2">
+                        <div class="col-12 row">
+                        <select class="select2 form-control col-10" name="cust_id" id="select2">
                             <option value="-">Pilih Customer </option> @foreach ($customer as $c) <option
                                 value="{{ $c->id_cust }}"> {{ $c->nama_cust }}</option> @endforeach
                         </select>
+                        <a href="{{route('customer.add')}}" class="btn btn-success ml-4">Add Customer </a>
+                    </div>
                     </div>
                     <div class="form-group">
                         <label for="name">Kamera</label>
-                        <select class="select2 form-control" name="kamera_id" id="select22">
+                        <select class="select2 form-control col-11" name="kamera_id" id="select22">
                             <option value="-">Pilih Produk </option> @foreach ($kamera as $j) <option
                                 value="{{ $j->id_kamera }}" data-harga="{{ $j->harga_kamera }}">
                                 {{ $j->nama_kamera."/".$j->tipe_kamera }}</option>
@@ -110,15 +121,15 @@
                                 <option value="12">12 Jam</option>
                                 <option value="24">1 Hari</option>
                             </select>
-                            <div class="col-5 ml-2">
-                                <input type="text" id="currency" class="form-control" name="harga"
-                                    value="{{ $harga }}" readonly placeholder="Harga Sewa">
+                            <div class="col-5 ml-4">
+                                <input type="text" id="currency" class="form-control" name="harga" value="{{ $harga }}"
+                                    readonly placeholder="Harga Sewa">
                             </div>
                         </div>
                     </div>
                     <div class="form-group" id="catatan">
                         <label for="name">Catatan</label>
-                        <textarea name="catatan" class="form-control" id="exampleFormControlTextarea1"
+                        <textarea name="catatan" class="form-control col-11" id="exampleFormControlTextarea1"
                             rows="5"></textarea>
                     </div>
                     <div class="form-group" id="jaminan">
@@ -130,7 +141,7 @@
                                 <option value="sim">SIM</option>
 
                             </select>
-                            <div class="col-5 ml-2">
+                            <div class="col-5 ml-4">
                                 <input id="admin_id" class="form-control" type="text" name="no_jaminan"
                                     value="{{ date('Dhi') }}" readonly>
                                 <small class="text-danger">*tulis kode ini di sticker dan tempelkan di jaminan
@@ -140,7 +151,7 @@
                     </div>
                     <div class="form-group">
                         <label for="name">Kasir</label>
-                        <input id="admin_id" class="form-control" type="text" value="{{ Auth::user()->name }}"
+                        <input id="admin_id" class="form-control col-11" type="text" value="{{ Auth::user()->name }}"
                             readonly>
                         <input id="admin_id" class="form-control" name="admin_id" type="hidden"
                             value="{{ Auth::user()->id }}" readonly>

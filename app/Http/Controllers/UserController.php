@@ -85,7 +85,6 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        //get post data by id
         $post = User::find($id);
 
         //load form view

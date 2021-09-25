@@ -33,6 +33,12 @@
                 <span class="link-title">Master Merk</span>
             </a>
         </li>
+        <li class="nav-item {{ isActive('customer') }}">
+            <a href="{{route('customer')}}" class="nav-link">
+                <i class="link-icon" data-feather="user-check"></i>
+                <span class="link-title">Master Customer</span>
+            </a>
+        </li>
         <li class="nav-item">
             <a href="{{route('user')}}" class="nav-link">
                 <i class="link-icon" data-feather="users"></i>
