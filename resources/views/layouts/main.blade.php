@@ -46,6 +46,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/user-assets/css/util.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/user-assets/css/main.css">
     <!--===============================================================================================-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
 </head>
 
 <body class="animsition">
@@ -108,21 +110,21 @@
                     <!-- Menu desktop -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
-                            <li @if(Request::segment(2)=='' ) class="active-menu" @endif>
+                            <li @if(Request::segment(1)=='' ) class="active-menu" @endif>
                                 <a href="{{ url('/') }}">Home</a>
                             </li>
 
-                            <li class="label1" data-label1="baru">
-                                <a href="#">Kamera</a>
+                            <li @if(Request::segment(1)=='kamera' ) class="active-menu" @endif>
+                                <a href="{{ route('ukamera') }}">Kamera</a>
                             </li>
                             @guest
                             @else
-                                <li>
-                                    <a href="#">Penyewaan</a>
+                                <li @if(Request::segment(1)=='rent' ) class="active-menu" @endif>
+                                    <a href="{{ route('rent') }}">Penyewaan</a>
                                 </li>
 
-                                <li>
-                                    <a href="#">Riwayat</a>
+                                <li @if(Request::segment(1)=='history' ) class="active-menu" @endif>
+                                    <a href="{{ route('rent.history') }}">Riwayat</a>
                                 </li>
                             @endguest
                         </ul>
@@ -130,14 +132,14 @@
 
                     <!-- Icon header -->
                     <div class="wrap-icon-header flex-w flex-r-m">
-                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+                        {{-- <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                             <i class="zmdi zmdi-search"></i>
                         </div>
 
                         <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
                             data-notify="0">
                             <i class="zmdi zmdi-shopping-basket"></i>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </nav>
@@ -155,15 +157,15 @@
 
             <!-- Icon header -->
             <div class="wrap-icon-header flex-w flex-r-m m-r-15">
-                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+                {{-- <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
                     <i class="zmdi zmdi-search"></i>
                 </div>
 
                 <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
                     data-notify="0">
                     <i class="zmdi zmdi-shopping-basket"></i>
-                </div>
-                
+                </div> --}}
+
                 <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10">
                     <i class="zmdi zmdi-account-box-o"></i>
                 </div>
@@ -182,24 +184,24 @@
         <div class="menu-mobile">
 
             <ul class="main-menu-m">
-                <li @if(Request::segment(2)=='' ) class="active-menu" @endif>
-                    <a href="{{ url('/') }}">Home</a>
+                <li @if(Request::segment(1)=='' ) class="active-menu" @endif>
+                <a href="{{ url('/') }}">Home</a>
                 </li>
 
-                <li class="label1" data-label1="baru">
-                    <a href="#">Kamera</a>
+                <li @if(Request::segment(1)=='kamera' ) class="active-menu" @endif>
+                    <a href="{{ route('ukamera') }}">Kamera</a>
                 </li>
                 @guest
                 @else
-                    <li>
-                        <a href="#">Penyewaan</a>
+                    <li @if(Request::segment(1)=='rent' ) class="active-menu" @endif>
+                        <a href="{{ route('rent') }}">Penyewaan</a>
                     </li>
 
-                    <li>
-                        <a href="#">Riwayat</a>
+                    <li @if(Request::segment(1)=='history' ) class="active-menu" @endif>
+                        <a href="{{ route('rent.history') }}">Riwayat</a>
                     </li>
                 @endguest
-                
+
                 @guest
                     @if(Route::has('login'))
                         <li>
@@ -220,7 +222,7 @@
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }} 
+                            {{ __('Logout') }}
                         </a>
                     </li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -347,102 +349,21 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-3 p-b-50">
                     <h4 class="stext-301 cl0 p-b-30">
-                        Categories
+                        Apa itu Studio jalanan.
                     </h4>
 
-                    <ul>
-                        <li class="p-b-10">
-                            <a href="{{ url('/') }}/user-assets/#"
-                                class="stext-107 cl7 hov-cl1 trans-04">
-                                Women
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="{{ url('/') }}/user-assets/#"
-                                class="stext-107 cl7 hov-cl1 trans-04">
-                                Men
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="{{ url('/') }}/user-assets/#"
-                                class="stext-107 cl7 hov-cl1 trans-04">
-                                Shoes
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="{{ url('/') }}/user-assets/#"
-                                class="stext-107 cl7 hov-cl1 trans-04">
-                                Watches
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 p-b-50">
-                    <h4 class="stext-301 cl0 p-b-30">
-                        Help
-                    </h4>
-
-                    <ul>
-                        <li class="p-b-10">
-                            <a href="{{ url('/') }}/user-assets/#"
-                                class="stext-107 cl7 hov-cl1 trans-04">
-                                Track Order
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="{{ url('/') }}/user-assets/#"
-                                class="stext-107 cl7 hov-cl1 trans-04">
-                                Returns
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="{{ url('/') }}/user-assets/#"
-                                class="stext-107 cl7 hov-cl1 trans-04">
-                                Shipping
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="{{ url('/') }}/user-assets/#"
-                                class="stext-107 cl7 hov-cl1 trans-04">
-                                FAQs
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 p-b-50">
-                    <h4 class="stext-301 cl0 p-b-30">
-                        GET IN TOUCH
-                    </h4>
-
-                    <p class="stext-107 cl7 size-201">
-                        Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us
-                        on (+1) 96 716 6879
+                    <p>
+                        Studio jalanan adalah tempat sewa kamera terkece tergaul dan termantap.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </p>
+                </div>
 
-                    <div class="p-t-27">
-                        <a href="{{ url('/') }}/user-assets/#"
-                            class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                            <i class="fa fa-facebook"></i>
-                        </a>
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    
+                </div>
 
-                        <a href="{{ url('/') }}/user-assets/#"
-                            class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                            <i class="fa fa-instagram"></i>
-                        </a>
-
-                        <a href="{{ url('/') }}/user-assets/#"
-                            class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                            <i class="fa fa-pinterest-p"></i>
-                        </a>
-                    </div>
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    
                 </div>
 
                 <div class="col-sm-6 col-lg-3 p-b-50">
@@ -467,44 +388,14 @@
             </div>
 
             <div class="p-t-40">
-                <div class="flex-c-m flex-w p-b-18">
-                    <a href="{{ url('/') }}/user-assets/#" class="m-all-1">
-                        <img src="{{ url('/') }}/user-assets/images/icons/icon-pay-01.png"
-                            alt="ICON-PAY">
-                    </a>
-
-                    <a href="{{ url('/') }}/user-assets/#" class="m-all-1">
-                        <img src="{{ url('/') }}/user-assets/images/icons/icon-pay-02.png"
-                            alt="ICON-PAY">
-                    </a>
-
-                    <a href="{{ url('/') }}/user-assets/#" class="m-all-1">
-                        <img src="{{ url('/') }}/user-assets/images/icons/icon-pay-03.png"
-                            alt="ICON-PAY">
-                    </a>
-
-                    <a href="{{ url('/') }}/user-assets/#" class="m-all-1">
-                        <img src="{{ url('/') }}/user-assets/images/icons/icon-pay-04.png"
-                            alt="ICON-PAY">
-                    </a>
-
-                    <a href="{{ url('/') }}/user-assets/#" class="m-all-1">
-                        <img src="{{ url('/') }}/user-assets/images/icons/icon-pay-05.png"
-                            alt="ICON-PAY">
-                    </a>
-                </div>
+                <p class="text-warning txt-center"> Full paid to remove this karna saya trauma dighosting</p>
 
                 <p class="stext-107 cl6 txt-center">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;<script>
                         document.write(new Date().getFullYear());
-
                     </script> All rights reserved | This template is made with <i class="fa fa-heart-o"
-                        aria-hidden="true"></i> by <a
-                        href="{{ url('/') }}/user-assets/https://colorlib.com"
-                        target="_blank">Colorlib</a>.
-                    Downloaded from <a href="{{ url('/') }}/user-assets/https://themeslab.org/"
-                        target="_blank">Themeslab</a>
+                        aria-hidden="true"></i> by <a>Aros Indonesia</a>.
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
                 </p>
@@ -579,112 +470,6 @@
                     </div>
 
                     <div class="col-md-6 col-lg-5 p-b-30">
-                        <div class="p-r-50 p-t-5 p-lr-0-lg">
-                            <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                                Lightweight Jacket
-                            </h4>
-
-                            <span class="mtext-106 cl2">
-                                $58.79
-                            </span>
-
-                            <p class="stext-102 cl3 p-t-23">
-                                Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat
-                                ornare feugiat.
-                            </p>
-
-                            <!--  -->
-                            <div class="p-t-33">
-                                <div class="flex-w flex-r-m p-b-10">
-                                    <div class="size-203 flex-c-m respon6">
-                                        Size
-                                    </div>
-
-                                    <div class="size-204 respon6-next">
-                                        <div class="rs1-select2 bor8 bg0">
-                                            <select class="js-select2" name="time">
-                                                <option>Choose an option</option>
-                                                <option>Size S</option>
-                                                <option>Size M</option>
-                                                <option>Size L</option>
-                                                <option>Size XL</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="flex-w flex-r-m p-b-10">
-                                    <div class="size-203 flex-c-m respon6">
-                                        Color
-                                    </div>
-
-                                    <div class="size-204 respon6-next">
-                                        <div class="rs1-select2 bor8 bg0">
-                                            <select class="js-select2" name="time">
-                                                <option>Choose an option</option>
-                                                <option>Red</option>
-                                                <option>Blue</option>
-                                                <option>White</option>
-                                                <option>Grey</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="flex-w flex-r-m p-b-10">
-                                    <div class="size-204 flex-w flex-m respon6-next">
-                                        <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                            <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                                <i class="fs-16 zmdi zmdi-minus"></i>
-                                            </div>
-
-                                            <input class="mtext-104 cl3 txt-center num-product" type="number"
-                                                name="num-product" value="1">
-
-                                            <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                                <i class="fs-16 zmdi zmdi-plus"></i>
-                                            </div>
-                                        </div>
-
-                                        <button
-                                            class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                            Add to cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--  -->
-                            <div class="flex-w flex-m p-l-100 p-t-40 respon7">
-                                <div class="flex-m bor9 p-r-10 m-r-11">
-                                    <a href="{{ url('/') }}/user-assets/#"
-                                        class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-                                        data-tooltip="Add to Wishlist">
-                                        <i class="zmdi zmdi-favorite"></i>
-                                    </a>
-                                </div>
-
-                                <a href="{{ url('/') }}/user-assets/#"
-                                    class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                                    data-tooltip="Facebook">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-
-                                <a href="{{ url('/') }}/user-assets/#"
-                                    class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                                    data-tooltip="Twitter">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-
-                                <a href="{{ url('/') }}/user-assets/#"
-                                    class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                                    data-tooltip="Google Plus">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -707,7 +492,6 @@
                 dropdownParent: $(this).next('.dropDownSelect2')
             });
         })
-
     </script>
     <!--===============================================================================================-->
     <script src="{{ url('/') }}/user-assets/vendor/daterangepicker/moment.min.js"></script>
@@ -719,7 +503,6 @@
     <script src="{{ url('/') }}/user-assets/vendor/parallax100/parallax100.js"></script>
     <script>
         $('.parallax100').parallax100();
-
     </script>
     <!--===============================================================================================-->
     <script src="{{ url('/') }}/user-assets/vendor/MagnificPopup/jquery.magnific-popup.min.js">
@@ -735,7 +518,6 @@
                 mainClass: 'mfp-fade'
             });
         });
-
     </script>
     <!--===============================================================================================-->
     <script src="{{ url('/') }}/user-assets/vendor/isotope/isotope.pkgd.min.js"></script>
@@ -775,7 +557,6 @@
                 swal(nameProduct, "is added to cart !", "success");
             });
         });
-
     </script>
     <!--===============================================================================================-->
     <script src="{{ url('/') }}/user-assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js">
@@ -794,10 +575,78 @@
                 ps.update();
             })
         });
-
     </script>
     <!--===============================================================================================-->
     <script src="{{ url('/') }}/user-assets/js/main.js"></script>
+
+    {{-- select2 --}}
+        
+    {{-- select2 --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" integrity="sha512-kq3FES+RuuGoBW3a9R2ELYKRywUEQv0wvPTItv3DSGqjpbNtGWVdvT8qwdKkqvPzT93jp8tSF4+oN4IeTEIlQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/smalot-bootstrap-datetimepicker/2.4.4/css/bootstrap-datetimepicker.min.css" integrity="sha512-m9g5oqvMhf2FsilNZqftBnOR1GW+dJpb1a8RN+R3Aw1dVI2AeDfpSOa9Sm48xMacONC1vJlM2iIadPy4uLEC4Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smalot-bootstrap-datetimepicker/2.4.4/js/bootstrap-datetimepicker.min.js" integrity="sha512-4lTnmq2kNbykTiOPulgEvxRgqegB5/YMhMqaBWvxji/9wRgR9W/TSGF51/mIG1hQ6janxTojpr41y5/gaW9LRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script type="text/javascript">
+        $(".form_datetime").datetimepicker({
+            format: "yyyy-mm-dd HH:ii:ss",
+            autoclose: true,
+            todayBtn: true,
+            startDate: "2021-01-01 00:00",
+            minuteStep: 10
+        });
+    </script>    
+
+    <script>
+        $(document).ready(function () {
+            // select2
+            $('#select2').select2({
+                theme: "bootstrap"
+            });
+            $('#select22').select2({
+                theme: "bootstrap"
+            });
+            $('#select222').select2({
+                theme: "bootstrap"
+            });
+            $('#jenis-sewa').select2({
+                theme: "bootstrap"
+            });
+            
+
+            // custom stuff
+            var val = ""
+            $("#select22").on("change", function () {
+                // hitung harga
+                val = $(this).find('option:selected').data("harga");
+            });
+            $("#durasi").on("change", function () {
+                var dur = parseInt($(this).find('option:selected').val());
+                var final ="";
+                switch (dur) {
+                    case 6:
+                        final = parseInt(val) * 0.25;
+                        $("#currency").val(final);
+                        console.log(val);       
+                        console.log(final);       
+                        break;
+                    case 12:
+                        final = parseInt(val) * 0.5;
+                        $("#currency").val(final);
+                        break;
+                    case 24:
+                        final = parseInt(val);
+                        $("#currency").val(final);
+                        break;
+                }
+            });
+        });
+    </script>
 
 </body>
 

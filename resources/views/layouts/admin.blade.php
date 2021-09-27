@@ -296,7 +296,7 @@
                                             </a>
                                         </li> --}}
                                         <li class="nav-item">
-                                            <a href="javascript:;" class="nav-link">
+                                            <a href="{{route('user.edit', Auth::user()->id)}}" class="nav-link">
                                                 <i data-feather="edit"></i>
                                                 <span>Edit Profile</span>
                                             </a>
@@ -330,6 +330,7 @@
 
             <!-- partial:partials/_footer.html -->
             <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
+                <p class="text-warning text-center"> Full paid to remove this karna saya trauma dighosting</p>
                 <p class="text-muted text-center text-md-left">Copyright © {{date('Y')}} <a href="https://www.nobleui.com"
                         target="_blank">Aros</a>. All rights reserved</p>
                 <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Handcrafted With <i

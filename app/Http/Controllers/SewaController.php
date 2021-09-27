@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 use App\Models\Sewa;
 use App\Models\Kamera;
@@ -137,6 +138,7 @@ class SewaController extends Controller
         $now = date('Y-m-d H:i:s');
         $postData = array();
         $postData['diambil'] = "1";
+        $postData['admin_id'] = Auth::user()->id ;
         $postData['updated_at'] = $now;
         
         Sewa::find($id)->update($postData);

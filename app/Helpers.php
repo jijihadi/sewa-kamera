@@ -20,6 +20,20 @@ function selectsama($ich, $nii){
     }
 }
 
+function viewdenda($id)
+{
+    $comm = DB::table("pengembalians")
+        ->where("sewa_id", $id) // Getting the Authenticated user id
+        ->get()->toArray();
+        // 
+    if ($comm[0]->denda == "0") {
+        return "Tidak ada denda";
+    } else {
+        return $comm[0]->denda." karna ".$comm[0]->catatan;
+    }
+    
+}
+
 function namakamera( $id)
 {
     $comm = DB::table("kameras")

@@ -52,7 +52,7 @@
                                 <h3 class="mb-2">{{ $trent }}</h3>
                                 <div class="d-flex align-items-baseline">
                                     <p class="text-success">
-                                        <span>Sewa terbaru
+                                        <span>Sewa terakhir
                                             <b>{{ $newrent }}</b>
                                         </span>
                                     </p>
@@ -139,7 +139,7 @@
                                     <td>{{ tglindo($m->tanggal_sewa) }}</td>
                                     <td>{{ rupiah($m->harga) }}</td>
                                     <td>{{ namacust($m->cust_id) }}</td>
-                                    <td>{{ namaadmin($m->admin_id) }}</td>
+                                    <td>{{ ($m->admin_id!="0")?namaadmin($m->admin_id) : "Belum diambil" }}</td>
                                     <td>{!! statusbadge($m->diambil) !!}</td>
                                 </tr>
                             @endforeach

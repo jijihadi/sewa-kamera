@@ -25,6 +25,15 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/kamera', [HomeController::class, 'kamera'])->name('ukamera');
+Route::get('/kamera/detail/{id}', [HomeController::class, 'show_kamera'])->name('kamera.show');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/rent', [HomeController::class, 'rent'])->name('rent');
+    Route::get('/rent/new/{id}', [HomeController::class, 'rent_new'])->name('rent.new');
+    Route::post('/rent/insert', [HomeController::class, 'rent_store'])->name('rent.add');
+    Route::get('/history', [HomeController::class, 'history'])->name('rent.history');
+});
 
 Route::group(['middleware' => ['auth','is_admin']], function () {
     // dash

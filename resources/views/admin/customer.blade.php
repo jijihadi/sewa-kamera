@@ -47,7 +47,8 @@
                                     <td>{{ $m->email_cust }}</td>
                                     <td>{{ $m->hp_cust }}</td>
                                     <td>{{ $m->alamat_cust }}</td>
-                                    <td>{{ ($m->status_cust == 1)? "Aktif" : "Belum" }}</td>
+                                    <td>{{ ($m->status_cust == 1)? "Aktif" : "Belum" }}
+                                    </td>
                                     <td>{{ tglindo($m->created_at) }}</td>
                                     <td>
                                         <a href="{{ route('customer.edit', $m->id_cust) }}">

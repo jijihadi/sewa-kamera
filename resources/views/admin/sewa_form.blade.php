@@ -85,10 +85,19 @@
                                         <line x1="3" y1="10" x2="21" y2="10"></line>
                                     </svg></span>
                             </div>
-                            <div class="input-group date timepicker col-3" id="datetimepickerExample" data-target-input="nearest">
-                                <input type="text" class="form-control timepicker" name="waktu_sewa" data-target="#datetimepickerExample">
-                                <div class="input-group-append" data-target="#datetimepickerExample" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                            <div class="input-group date timepicker col-3" id="datetimepickerExample"
+                                data-target-input="nearest">
+                                <input type="text" class="form-control timepicker" name="waktu_sewa"
+                                    data-target="#datetimepickerExample">
+                                <div class="input-group-append" data-target="#datetimepickerExample"
+                                    data-toggle="datetimepicker">
+                                    <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-clock">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
+                                        </svg></div>
                                 </div>
                             </div>
                         </div>
@@ -96,12 +105,13 @@
                     <div class="form-group">
                         <label for="name">Customer</label>
                         <div class="col-12 row">
-                        <select class="select2 form-control col-10" name="cust_id" id="select2">
-                            <option value="-">Pilih Customer </option> @foreach ($customer as $c) <option
-                                value="{{ $c->id_cust }}"> {{ $c->nama_cust }}</option> @endforeach
-                        </select>
-                        <a href="{{route('customer.add')}}" class="btn btn-success ml-4">Add Customer </a>
-                    </div>
+                            <select class="select2 form-control col-10" name="cust_id" id="select2">
+                                <option value="-">Pilih Customer </option> @foreach ($customer as $c) <option
+                                    value="{{ $c->id_cust }}"> {{ $c->nama_cust }}</option> @endforeach
+                            </select>
+                            <a href="{{ route('customer.add') }}" class="btn btn-success ml-4">Add
+                                Customer </a>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="name">Kamera</label>
@@ -151,8 +161,8 @@
                     </div>
                     <div class="form-group">
                         <label for="name">Kasir</label>
-                        <input id="admin_id" class="form-control col-11" type="text" value="{{ Auth::user()->name }}"
-                            readonly>
+                        <input id="admin_id" class="form-control col-11" type="text"
+                            value="{{ Auth::user()->name }}" readonly>
                         <input id="admin_id" class="form-control" name="admin_id" type="hidden"
                             value="{{ Auth::user()->id }}" readonly>
                     </div>
