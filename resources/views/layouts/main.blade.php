@@ -60,7 +60,7 @@
             <div class="top-bar">
                 <div class="content-topbar flex-sb-m h-full container">
                     <div class="left-top-bar">
-                        Selamat datang di Studio Jalanan
+                        Selamat datang di Studio Jalanan <small>Jalan lupa bayar ya Saya trauma dighosting</small>
                     </div>
 
                     <div class="right-top-bar flex-w h-full">

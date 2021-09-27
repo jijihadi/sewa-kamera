@@ -32,7 +32,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user/home');
+        $random = Kamera::inRandomOrder()->limit(4)->get();
+
+        return view('user/home',  ['kamera'=>$random]);
     }
     // 
     public function kamera()
@@ -44,7 +46,7 @@ class HomeController extends Controller
     public function show_kamera($id)
     {
         $data = Kamera::find($id);
-        $random = Kamera::inRandomOrder()->limit(4)->get();;
+        $random = Kamera::inRandomOrder()->limit(4)->get();
         return view('user/kamera_show', ['kamera'=> $data, 'random'=>$random]);
     }
     // 
