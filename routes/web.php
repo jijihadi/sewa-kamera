@@ -72,6 +72,8 @@ Route::group(['middleware' => ['auth','is_admin']], function () {
     // --
     Route::get('/admin/history/', [SewaController::class, 'history'])->name('sewa.history');
     Route::get('/admin/sewa/show/{$id}', [SewaController::class, 'show'])->name('sewa.show');
+    Route::get('/admin/print', [SewaController::class, 'print'])->name('sewa.print');
+
     
     // 
     Route::get('/admin/kembali', [KembaliController::class, 'index'])->name('kembali');

@@ -85,7 +85,7 @@
                             <input class="d-none" type="text" name="oldpassword" value="{{ $password }}">
                         </div>
                     @endif
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="name">Role</label>
                         <select class="select2 form-control" name="is_admin">
                             <option value="0" {{($role == "0")? "selected":""}}>User</option>

@@ -7,6 +7,9 @@
         <div class="card">
             <div class="card-header row">
                 <h6 class="col-6"><i class="link-icon" data-feather="check-square"></i> History Penyewaan</h6>
+                <div class="col-6 text-right">
+                <a href="{{route('sewa.print')}}" class="btn btn-sm btn-success"><i class="feather icon-printer"></i> &nbsp;   Cetak</a>
+            </div>
             </div>
             <div class="card-body">
                 @if(session('msg')!='')
@@ -24,52 +27,27 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Tanggal Pesan</th>
-                                <th>Barang</th>
                                 <th>Tanggal Sewa</th>
+                                <th>Barang</th>
                                 <th>Harga</th>
                                 <th>Customer</th>
                                 <th>Kasir</th>
-                                <th>Status</th>
-                                <th>#</th>
+                                <th>Tanggal Kembali</th>
+                                <th>Denda</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($sewa as $m)
                                 <tr>
                                     <td>{{ @$loop->iteration }}</td>
-                                    <td>{{ tglindo($m->tanggal_pesan)}} Jam {{ date("H:i:s", strtotime($m->tanggal_pesan))}}</td>
-                                    <td>{{ namakamera($m->kamera_id)}}</td>
                                     <td>{{ tglindo($m->tanggal_sewa) }}</td>
+                                    <td>{{ namakamera($m->kamera_id)}}</td>
                                     <td>{{ rupiah($m->harga) }}</td>
                                     <td>{{ namacust($m->cust_id)}}</td>
                                     <td>{{ namaadmin($m->admin_id)}}</td>
-                                    <td>{!! statusbadge($m->diambil) !!}</td>
-                                    <td>
-                                        @if ($m->diambil==0)
-                                        <a onclick="return confirm('Kamera {{ namakamera($m->kamera_id) }} sudah diambil oleh {{namacust($m->cust_id)}} ??')"
-                                            href="{{ route('sewa.pick', $m->id_sewa) }}">
-                                            <button type="button" class="btn btn-outline-success btn-icon">
-                                                <i class="link-icon" data-feather="thumbs-up"></i>
-                                            </button>
-                                        </a>
-                                        @endif
-                                        @if ($m->diambil==1)
-                                        
-                                        <a href="{{ route('kembali.add', $m->id_sewa) }}">
-                                            <button type="button" class="btn btn-outline-primary btn-icon-text">
-                                                <i class="btn-icon-prepend" data-feather="check-square"></i>
-                                                Pengembalian
-                                            </button>
-                                        </a>                                            
-                                        @endif
-                                        <a onclick="return confirm('Hapus data sewa {{ namakamera($m->kamera_id) }}')"
-                                            href="{{ route('sewa.delete', $m->id_sewa) }}">
-                                            <button type="button" class="btn btn-outline-danger btn-icon">
-                                                <i class="link-icon" data-feather="trash"></i>
-                                            </button>
-                                        </a>
-                                    </td>
+                                    <td>{{ tglindo($m->waktu_kembali) }}</td>
+                                    <td>{{ viewdenda($m->sewa_id) }}</td>
+                                    
                                 </tr>
                             @endforeach
                         </tbody>

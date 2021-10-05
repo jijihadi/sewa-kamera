@@ -14,7 +14,7 @@
                 <span class="link-title">Jadwal penyewaan</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ isActive('history') }}">
             <a href="{{route('sewa.history')}}" class="nav-link">
                 <i class="link-icon" data-feather="clipboard"></i>
                 <span class="link-title">Riwayat penyewaan</span>

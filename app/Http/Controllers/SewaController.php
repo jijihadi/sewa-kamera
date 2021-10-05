@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use PDF;
 
 use App\Models\Sewa;
 use App\Models\Kamera;
@@ -37,9 +38,9 @@ class SewaController extends Controller
     public function history()
     {
         //
-        $data = Sewa::all()->where('diambil', '3');
+        $data = Sewa::join('pengembalians', 'sewas.id_sewa', 'pengembalians.sewa_id')->where('diambil', '3')->get();
 
-        //  dd($user);
+        //  dd($data->toarray());
         return view('admin.history_sewa', ['sewa' => $data]);
     }
 
@@ -158,6 +159,14 @@ class SewaController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+    
+    public function print()
+    {
+        $data = Sewa::join('pengembalians', 'sewas.id_sewa', 'pengembalians.sewa_id')->where('diambil', '3')->get();
+
+        $pdf = PDF::loadView('admin.sewa_print',['sewa' => $data]);
+        return $pdf->stream('Data Penyewaan per-'.date('Y/m/d').'.pdf', array('Attachment'=>0));
     }
 
     /**

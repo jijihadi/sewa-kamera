@@ -33,8 +33,9 @@
                                 <th>Tanggal Pesan</th>
                                 <th>Barang</th>
                                 <th>Tanggal Sewa</th>
-                                <th>Harga</th>
                                 <th>Customer</th>
+                                <th>Jaminan</th>
+                                <th>Harga</th>
                                 <th>Kasir</th>
                                 <th>Status</th>
                                 <th>#</th>
@@ -47,8 +48,9 @@
                                     <td>{{ tglindo($m->tanggal_pesan)}} Jam {{ date("H:i:s", strtotime($m->tanggal_pesan))}}</td>
                                     <td>{{ namakamera($m->kamera_id)}}</td>
                                     <td>{{ tglindo($m->tanggal_sewa) }}</td>
-                                    <td>{{ rupiah($m->harga) }}</td>
                                     <td>{{ namacust($m->cust_id)}}</td>
+                                    <td>{!! namajaminan($m->jaminan_id)!!}</td>
+                                    <td>{{ rupiah($m->harga) }}</td>
                                     <td>{{ ($m->admin_id!="0")?namaadmin($m->admin_id) : "Belum diambil" }}</td>
                                     <td>{!! statusbadge($m->diambil) !!}</td>
                                     <td>

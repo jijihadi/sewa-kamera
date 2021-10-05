@@ -75,7 +75,7 @@
 	<hr>
 
 	<!-- Related Products -->
-	<section class="sec-relate-product bg0 p-t-45 p-b-105">
+	{{-- <section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
 			<div class="p-b-45">
 				<h3 class="ltext-106 cl5 txt-center">
@@ -116,6 +116,6 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --}}
 </section>
 @endsection

@@ -11,14 +11,14 @@
                     <a class="ltext-108 cl2 hov-cl1 trans-04">
                         Data Penyewaan {{ Auth::user()->name }}
                     </a>
-                    <div class="pull-right">
+                    {{-- <div class="pull-right">
                         
                     <a href="{{route('ukamera')}}">
                         <button class="btn btn-info">
                             Sewa Lagi <i class="zmdi zmdi-shopping-cart"></i>
                             </button>
                         </a>
-                    </div>
+                    </div> --}}
                 </h4>
                 <br>
                 
