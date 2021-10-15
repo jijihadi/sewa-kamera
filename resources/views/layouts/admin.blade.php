@@ -223,10 +223,11 @@
                                 <div class="dropdown-body">
                                     @php
                                         $not = json_decode(getnotif());
+                                        $link = "https://wa.link/6n9383";
                                     @endphp
                                     @foreach ($not as $n)
                                         
-                                    <a href="javascript:;" class="dropdown-item">
+                                    <a href="{{$link}}" target="_blank" class="dropdown-item">
                                         <div class="icon">
                                             <i data-feather="alert-circle"></i>
                                         </div>
