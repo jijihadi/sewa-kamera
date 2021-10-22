@@ -98,10 +98,10 @@ class SewaController extends Controller
         $id = DB::getPdo()->lastInsertId();
         // dd($id);
         // 
-        $postData = request()->except(['_token','jenis_jaminan', 'no_jaminan']);
+        $jam = date("H:i:s", strtotime($postData['waktu_sewa'].":00"));
+        $postData = request()->except(['_token','jenis_jaminan', 'no_jaminan', 'waktu_sewa']);
         // 
         $postData['jaminan_id'] = $id;
-        $jam = date("H:i:s", strtotime($postData['waktu_sewa'].":00"));
         $postData['tanggal_sewa'] = date("Y-m-d H:i:s", strtotime($postData['tanggal_sewa']." ".$jam));;
         $postData['tanggal_pesan'] = date('Y-m-d H:i:s');
         $postData['harga'] = bilanganbulat($postData['harga']);

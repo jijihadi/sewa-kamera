@@ -80,7 +80,7 @@
                             <a href="#" class="flex-c-m trans-04 p-lr-25">
                                 {{ Auth::user()->name }}
                             </a>
-                            <a href="#" class="flex-c-m trans-04 p-lr-25">
+                            <a href="{{route('profile')}}" class="flex-c-m trans-04 p-lr-25">
                                 Profile
                             </a>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();

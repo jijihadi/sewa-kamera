@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Auth;
 use DB;
 use Session;
-
 use App\Models\Sewa;
 use App\Models\Kamera;
 use App\Models\Jaminan;
@@ -135,5 +136,58 @@ class HomeController extends Controller
         $data = Sewa::where(['cust_id'=>$idc])->where('diambil', '3')->get();
 
         return view('user/history', ['sewa'=> $data]);
+    }
+    // 
+    public function profile()
+    {
+        //dapetin id cust
+        $comm = Customer::where(['email_cust'=>Auth::user()->email])->get()->toArray();
+        // get id
+        $idc = $comm[0]["id_cust"];
+        
+        $data = User::where(['email'=>Auth::user()->email])->get();
+        $data2 = Customer::where(['id_cust'=>$idc])->get();
+
+        return view('user/profile', ['user'=> $data, 'cust'=>$data2]);
+    }
+
+    public function update_profile(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'hp_cust' => ['required', 'numeric', 'digits_between:11,13' ],
+            'alamat_cust' => ['required', 'string'],
+        ]);
+
+        //get post data
+        $postData = $request->all();
+        
+        if($postData['password'] == null):
+            $postData['password']  = $postData['oldpassword'];
+            elseif($postData['password']!=null):
+                $postData['password'] = Hash::make($postData['password']);
+            endif;
+            // $postData = request()->except(['_token','hp_cust', 'alamat_cust', 'idc']);
+            //insert post data
+            User::find($id)->update($postData);
+            
+            //get post data untuk user
+            $postDatau = $request->all();
+            
+            // post data untuk customer
+            $postDatas['email_cust'] = $postDatau['email'];
+            $postDatas['nama_cust'] = $postDatau['name'];
+            $postDatas['hp_cust'] = $postDatau['hp_cust'];
+            $postDatas['alamat_cust'] = $postDatau['alamat_cust'];
+            
+            $idc = $postDatau['idc'];
+            // dd($postDatas);
+        Customer::find($idc)->update($postDatas);
+
+        //store status message
+        Session::flash('msg', 'Data '. $postData["name"].' changed successfully!');
+        
+        return redirect()->route('profile');
     }
 }

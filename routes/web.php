@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/rent/new/{id}', [HomeController::class, 'rent_new'])->name('rent.new');
     Route::post('/rent/insert', [HomeController::class, 'rent_store'])->name('rent.add');
     Route::get('/history', [HomeController::class, 'history'])->name('rent.history');
+    Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+    Route::post('/profile/update/{id}', [HomeController::class, 'update_profile'])->name('profile.update');
 });
 
 Route::group(['middleware' => ['auth','is_admin']], function () {

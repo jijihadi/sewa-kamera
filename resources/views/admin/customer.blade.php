@@ -6,7 +6,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-header row">
-                <h6 class="col-6"><i class="link-icon" data-feather="customers"></i> Data Customer</h6>
+                <h6 class="col-6"><i class="link-icon" data-feather="tag"></i> Data Customer</h6>
                 <a href="{{ route('customer.add') }}" class="col-6 text-right">
                     <button type="button" class="btn btn-primary btn-sm btn-icon-text mb-1 mb-md-0">
                         Tambah <i class="link-icon" data-feather="plus"></i>
