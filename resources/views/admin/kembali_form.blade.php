@@ -105,6 +105,7 @@
                         <input type="hidden" name="sewa_id" value="{{$sewa['id_sewa']}}">
                         <textarea name="catatan" class="form-control" id="exampleFormControlTextarea1"
                             rows="5"></textarea>
+                        <small class="text-secondary">*pastikan untuk mengisi catatan.</small>
                     </li>
 
                     <li class="list-group-item"><label for="name"><b>Denda Terlambat</b></label>

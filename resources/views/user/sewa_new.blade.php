@@ -80,6 +80,7 @@
                                 <label for="name">Catatan</label>
                                 <textarea name="catatan" class="form-control col-12" id="exampleFormControlTextarea1"
                                     rows="5"></textarea>
+                                <small class="text-secondary">*pastikan untuk mengisi catatan.</small>
                             </div>
                             <div class="form-group" id="jaminan">
                                 <label for="name">Jaminan</label>

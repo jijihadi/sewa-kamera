@@ -83,6 +83,15 @@ function namacust( $id)
     return $comm[0]->nama_cust;
 }
 
+function nocust($id)
+{
+    $comm = DB::table("customers")
+        ->where("id_cust", $id) // Getting the Authenticated user id
+        ->get()->toArray();
+        // 
+    return $comm[0]->hp_cust;
+}
+
 function namamerk( $id)
 {
     $comm = DB::table("merks")
