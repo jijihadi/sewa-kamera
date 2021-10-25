@@ -97,7 +97,7 @@
                     <h6 class="card-title mb-0">Daftar Pinjaman Terbaru</h6>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-hover mb-0">
+                    <table class="table table-hover mb-0"  id="myTable">
                         <thead>
                             <tr>
                                 <th>#</th>

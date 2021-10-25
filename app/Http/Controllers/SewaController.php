@@ -24,7 +24,7 @@ class SewaController extends Controller
     public function index()
     {
         //
-        $data = Sewa::orderBy('tanggal_sewa', 'desc')->get();
+        $data = Sewa::orderBy('tanggal_pesan', 'desc')->get();
 
         //  dd($user);
         return view('admin.sewa', ['sewa' => $data]);

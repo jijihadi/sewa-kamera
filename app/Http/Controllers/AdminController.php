@@ -20,7 +20,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $last10 = Sewa::orderBy('tanggal_sewa', 'desc')->limit('10')->get();
+        $last10 = Sewa::orderBy('tanggal_pesan', 'desc')->limit('10')->get();
         // dd($last10);
         //
         // $trent = Sewa::all()->where(['diambil'=>'2'])->count();
