@@ -43,6 +43,9 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @empty($sewa)
+                                <td colspan="10" align="center">Data masih kosong</td>
+                                @else
                             @foreach($sewa as $m)
                                 <tr>
                                     <td>{{ @$loop->iteration }}</td>
@@ -81,6 +84,7 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            @endempty
                         </tbody>
                     </table>
                 </div>

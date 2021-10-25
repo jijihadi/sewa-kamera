@@ -111,7 +111,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($last10 as $m)
+                            @empty($last10)
+                                <td colspan="8" align="center">Data masih kosong</td>
+                                @else
+                                @foreach($last10 as $m)
                                 <tr>
                                     <td>{{ @$loop->iteration }}</td>
                                     <td>{{ tglindo($m->tanggal_pesan) }} Jam
@@ -125,6 +128,8 @@
                                     <td>{!! statusbadge($m->diambil) !!}</td>
                                 </tr>
                             @endforeach
+                            @endempty
+                            
                         </tbody>
                     </table>
                 </div>
