@@ -24,7 +24,7 @@ class SewaController extends Controller
     public function index()
     {
         //
-        $data = Sewa::all()->whereNotIn('diambil', '3');
+        $data = Sewa::orderBy('tanggal_sewa', 'desc')->get();
 
         //  dd($user);
         return view('admin.sewa', ['sewa' => $data]);
@@ -184,7 +184,7 @@ class SewaController extends Controller
         // dd($idj);
         Jaminan::find($idj)->delete();
         // hapus kamera
-        Kamera::find($id)->delete();
+        Sewa::find($id)->delete();
         //store status message
         Session::flash('msg', 'Data deleted successfully!');
 

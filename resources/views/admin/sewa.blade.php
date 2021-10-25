@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-header row">
                 <h6 class="col-6"><i class="link-icon" data-feather="calendar"></i> Data Penyewaan</h6>
-                {{dd(json_decode(getnotif()))}}
+
                 <a href="{{ route('sewa.add') }}" class="col-6 text-right">
                     <button type="button" class="btn btn-primary btn-sm btn-icon-text mb-1 mb-md-0">
                         Tambah <i class="link-icon" data-feather="plus"></i>
@@ -48,7 +48,7 @@
                                     <td>{{ @$loop->iteration }}</td>
                                     <td>{{ tglindo($m->tanggal_pesan)}} Jam {{ date("H:i:s", strtotime($m->tanggal_pesan))}}</td>
                                     <td>{{ namakamera($m->kamera_id)}}</td>
-                                    <td>{{ tglindo($m->tanggal_sewa) }}</td>
+                                    <td>{{ tglindo($m->tanggal_sewa) }} Jam {{ date("H:i:s", strtotime($m->tanggal_sewa))}}</td>
                                     <td>{{ namacust($m->cust_id)}}</td>
                                     <td>{!! namajaminan($m->jaminan_id)!!}</td>
                                     <td>{{ rupiah($m->harga) }}</td>
