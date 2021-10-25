@@ -34,7 +34,6 @@ class HomeController extends Controller
     public function index()
     {
         $random = Kamera::inRandomOrder()->limit(4)->get();
-
         return view('user/home',  ['kamera'=>$random]);
     }
     // 
