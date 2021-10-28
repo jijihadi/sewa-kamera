@@ -211,9 +211,11 @@
                             <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i data-feather="bell"></i>
+                                @if (getnumbnotif()!="0")
                                 <div class="indicator">
                                     <div class="circle"></div>
                                 </div>
+                                @endif
                             </a>
                             <div class="dropdown-menu" aria-labelledby="notificationDropdown">
                                 <div class="dropdown-header d-flex align-items-center justify-content-between">
