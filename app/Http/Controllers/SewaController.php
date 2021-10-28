@@ -37,8 +37,16 @@ class SewaController extends Controller
      */
     public function history()
     {
+        
+        $month =  $_GET['m'];
         //
-        $data = Sewa::join('pengembalians', 'sewas.id_sewa', 'pengembalians.sewa_id')->where('diambil', '3')->get();
+        DB::enableQueryLog();
+
+            $data = Sewa::join('pengembalians', 'sewas.id_sewa', 'pengembalians.sewa_id')->where('diambil', '3')->where(DB::raw('MONTH(tanggal_sewa)'), $month)->get();
+
+
+        $quries = DB::getQueryLog();
+        // dd($month);
 
         //  dd($data->toarray());
         return view('admin.history_sewa', ['sewa' => $data]);
