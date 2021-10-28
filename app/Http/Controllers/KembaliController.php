@@ -51,7 +51,7 @@ class KembaliController extends Controller
         //
         $this->validate($request, [
             'catatan' => ['required', 'string'],
-            'denda' => ['required', 'integer'],
+            'denda' => ['required'],
         ]);
 
         //get post data

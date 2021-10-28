@@ -47,6 +47,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Tanggal Sewa</th>
+                                <th>Durasi</th>
                                 <th>Barang</th>
                                 <th>Harga</th>
                                 <th>Customer</th>
@@ -60,6 +61,7 @@
                                 <tr>
                                     <td>{{ @$loop->iteration }}</td>
                                     <td>{{ tglindo($m->tanggal_sewa) }}</td>
+                                    <td>{{ $m->durasi}} Jam</td>
                                     <td>{{ namakamera($m->kamera_id) }}</td>
                                     <td>{{ rupiah($m->harga) }}</td>
                                     <td>{{ namacust($m->cust_id) }}</td>

@@ -34,6 +34,7 @@
                                 <th>Tanggal Pesan</th>
                                 <th>Barang</th>
                                 <th>Tanggal Sewa</th>
+                                <th>Durasi</th>
                                 <th>Customer</th>
                                 <th>Jaminan</th>
                                 <th>Harga</th>
@@ -52,6 +53,7 @@
                                     <td>{{ tglindo($m->tanggal_pesan)}} Jam {{ date("H:i:s", strtotime($m->tanggal_pesan))}}</td>
                                     <td>{{ namakamera($m->kamera_id)}}</td>
                                     <td>{{ tglindo($m->tanggal_sewa) }} Jam {{ date("H:i:s", strtotime($m->tanggal_sewa))}}</td>
+                                    <td>{{ $m->durasi}} Jam</td>
                                     <td>{{ namacust($m->cust_id)}}</td>
                                     <td>{!! namajaminan($m->jaminan_id)!!}</td>
                                     <td>{{ rupiah($m->harga) }}</td>
