@@ -22,6 +22,8 @@ use App\Http\Controllers\CustomerController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/test', [SewaController::class, 'test'])->name('test');
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

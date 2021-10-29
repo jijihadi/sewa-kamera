@@ -29,6 +29,19 @@ class SewaController extends Controller
         //  dd($user);
         return view('admin.sewa', ['sewa' => $data]);
     }
+
+    public function test()
+    {
+        DB::enableQueryLog();
+        $comm = DB::table("sewas")
+        ->select('*', DB::raw('tanggal_sewa + INTERVAL durasi HOUR as deadline'))
+        ->where(DB::raw('MONTH(now())'), DB::raw('MONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
+        ->where(DB::raw('DAYOFMONTH(now())'), DB::raw('DAYOFMONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
+        ->where(DB::raw('HOUR(NOW())'), '>', DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi-2) HOUR)')) // Getting the Authenticated user id
+        ->get()->toarray();
+        $quries = DB::getQueryLog();
+        dd($quries);
+    }
     
     /**
      * Display a listing of the resource.

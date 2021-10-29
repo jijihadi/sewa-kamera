@@ -230,7 +230,7 @@
                                     @foreach ($not as $n)
                                     @php
                                         $numb = "62".substr(nocust($n->cust_id), 1);
-                                        $link = "https://wa.me/".$numb."?text=Hay%20kak%20". namacust($n->cust_id)."%2C%20mau%20menginformasikan%2C%20sewa%20kamera%20kakak%20terakhir%20hari%20ini%2C%20mohon%20dikembalikan%20sebelum%20toko%20tutup%20ya%2C%20terima%20kasih%0ASalam%20kami%0AStudio%20Jalanan";
+                                        $link = "https://wa.me/".$numb."?text=Hay%20kak%20". namacust($n->cust_id)."%2C%20mau%20menginformasikan%2C%20sewa%20kamera%20kakak%20berakhir%20pada%20".tglindo($n->deadline) ." Jam ". date("H:i:s", strtotime($n->deadline))."%2C%20mohon%20dikembalikan%20sebelum%20jam%20tersebut%20atau%20sebelum%20toko%20tutup%20ya%2C%20terima%20kasih%0ASalam%20kami%0AStudio%20Jalanan";
                                     @endphp
                                     <a href="{{$link}}" target="_blank" class="dropdown-item">
                                         <div class="icon">

@@ -38,19 +38,45 @@ function getnotif()
 {
     $comm = DB::table("sewas")
         ->select('*', DB::raw('tanggal_sewa + INTERVAL durasi HOUR as deadline'))
-        ->where(DB::raw('DAYOFMONTH(now())'), DB::raw('DAYOFMONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
         ->where(DB::raw('MONTH(now())'), DB::raw('MONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
+        ->where(DB::raw('DAYOFMONTH(now())'), DB::raw('DAYOFMONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
+        ->where(DB::raw('HOUR(NOW())'), '>', DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi-2) HOUR)')) // Getting the Authenticated user id
+        ->where(DB::raw('HOUR(NOW())'), '<', DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi+1) Minute)')) // Getting the Authenticated user id
         ->get()->toarray();
         // 
     return json_encode($comm);
 }
 
+// function getnotif()
+// {
+//     $comm = DB::table("sewas")
+//         ->select('*', DB::raw('tanggal_sewa + INTERVAL durasi HOUR as deadline'))
+//         ->where(DB::raw('DAYOFMONTH(now())'), DB::raw('DAYOFMONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
+//         ->where(DB::raw('MONTH(now())'), DB::raw('MONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
+//         ->get()->toarray();
+//         // 
+//     return json_encode($comm);
+// }
+
+// function getnumbnotif()
+// {
+//     $comm = DB::table("sewas")
+//         ->select('*', DB::raw('tanggal_sewa + INTERVAL durasi HOUR as deadline'))
+//         ->where(DB::raw('DAYOFMONTH(now())'), DB::raw('DAYOFMONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
+//         ->where(DB::raw('MONTH(now())'), DB::raw('MONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
+//         ->get()->toarray();
+//         // 
+//     return count($comm);
+// }
+
 function getnumbnotif()
 {
     $comm = DB::table("sewas")
         ->select('*', DB::raw('tanggal_sewa + INTERVAL durasi HOUR as deadline'))
-        ->where(DB::raw('DAYOFMONTH(now())'), DB::raw('DAYOFMONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
         ->where(DB::raw('MONTH(now())'), DB::raw('MONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
+        ->where(DB::raw('DAYOFMONTH(now())'), DB::raw('DAYOFMONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
+        ->where(DB::raw('HOUR(NOW())'), '>', DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi-2) HOUR)')) // Getting the Authenticated user id
+        ->where(DB::raw('HOUR(NOW())'), '<', DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi+1) Minute)')) // Getting the Authenticated user id
         ->get()->toarray();
         // 
     return count($comm);
