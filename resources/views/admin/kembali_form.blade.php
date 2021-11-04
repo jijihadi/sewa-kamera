@@ -17,7 +17,9 @@
                 <li class="list-group-item"><b>Penyewa</b> : {{ namacust($sewa['cust_id']) }}
                 </li>
                 <li class="list-group-item"><b>Tanggal Sewa</b> :
-                    {{ tglindo($sewa['tanggal_sewa']) }}</li>
+                    {{ tglindo($sewa['tanggal_sewa']) }}
+                    {{ date("H:i:s", strtotime($sewa['tanggal_sewa'])) }}
+                </li>
                 <li class="list-group-item"><b>Waktu Ambil</b> :
                     {{ tglindo($sewa['updated_at']) }} Jam
                     {{ date("H:i:s", strtotime($sewa['updated_at'])) }}
@@ -25,12 +27,12 @@
                 <li class="list-group-item"><b>Durasi</b> : {{ $sewa['durasi'] }} Jam</li>
                 <li class="list-group-item">
                     @php
-                        $deadline = date('Y-m-d H:i:s', strtotime($sewa['updated_at'])+60*60*$sewa['durasi'])
+                        $deadline = date('Y-m-d H:i:s', strtotime($sewa['tanggal_sewa'])+60*60*$sewa['durasi'])
                     @endphp
                     <h6><b>Deadline Sewa</b> :
                         {{ tglindo($deadline) }}
                         Jam
-                        {{ date("H:i:s", strtotime($sewa['updated_at'])) }}
+                        {{ date("H:i:s", strtotime($sewa['tanggal_sewa'])) }}
                     </h6>
                 </li>
                 <li class="list-group-item"><b>Jaminan</b> :

@@ -40,8 +40,7 @@ function getnotif()
         ->select('*', DB::raw('tanggal_sewa + INTERVAL durasi HOUR as deadline'))
         ->where(DB::raw('MONTH(now())'), DB::raw('MONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
         ->where(DB::raw('DAYOFMONTH(now())'), DB::raw('DAYOFMONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
-        ->where(DB::raw('HOUR(NOW())'), '>', DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi-2) HOUR)')) // Getting the Authenticated user id
-        ->where(DB::raw('HOUR(NOW())'), '<', DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi+1) Minute)')) // Getting the Authenticated user id
+        ->whereBetween(DB::raw('HOUR(NOW())'), [DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi-2) HOUR)'), DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi+1) MINUTE)')])
         ->get()->toarray();
         // 
     return json_encode($comm);
@@ -75,8 +74,7 @@ function getnumbnotif()
         ->select('*', DB::raw('tanggal_sewa + INTERVAL durasi HOUR as deadline'))
         ->where(DB::raw('MONTH(now())'), DB::raw('MONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
         ->where(DB::raw('DAYOFMONTH(now())'), DB::raw('DAYOFMONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
-        ->where(DB::raw('HOUR(NOW())'), '>', DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi-2) HOUR)')) // Getting the Authenticated user id
-        ->where(DB::raw('HOUR(NOW())'), '<', DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi+1) Minute)')) // Getting the Authenticated user id
+        ->whereBetween(DB::raw('HOUR(NOW())'), [DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi-2) HOUR)'), DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi+1) MINUTE)')])
         ->get()->toarray();
         // 
     return count($comm);
