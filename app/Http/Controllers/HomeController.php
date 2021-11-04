@@ -34,9 +34,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (!Auth::guest()):
         if (Auth::user()->is_admin == 1 ) {
             return redirect()->route('admin.dashboard');
         }
+    endif;
         $random = Kamera::inRandomOrder()->limit(4)->get();
         return view('user/home',  ['kamera'=>$random]);
     }
