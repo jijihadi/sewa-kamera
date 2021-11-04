@@ -24,6 +24,7 @@ class HomeController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+        
     }
 
     /**
@@ -33,6 +34,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (Auth::user()->is_admin == 1 ) {
+            return redirect()->route('admin.dashboard');
+        }
         $random = Kamera::inRandomOrder()->limit(4)->get();
         return view('user/home',  ['kamera'=>$random]);
     }
