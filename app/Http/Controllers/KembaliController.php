@@ -58,15 +58,10 @@ class KembaliController extends Controller
         $postData = $request->all();
         $postData = request()->except(['_token']);
 
-        $postData['waktu_kembali'] = date('Y-m-d H:i:s');
-        $postData['created_at'] = date('Y-m-d H:i:s');
         //insert post data
-        Kembali::insert($postData);
-
-        //dapetin id kamera
-        $comm = Sewa::find($postData['sewa_id'])->get()->toArray();
+        
         // cari id kamera
-        $idk = $comm[0]["kamera_id"];
+        $idk = $postData['kamera_id'];
         $comms = Kamera::find($idk)->get()->toArray();
         // dapetin data stok
         $stok = $comms[0]["stok"];
@@ -77,7 +72,13 @@ class KembaliController extends Controller
         $postDatay['diambil'] = '3';
         // ubah status sewa
         Sewa::find($postData['sewa_id'])->update($postDatay);
-
+        
+        $postData = request()->except(['_token','kamera_id']);
+        
+        $postData['waktu_kembali'] = date('Y-m-d H:i:s');
+        $postData['created_at'] = date('Y-m-d H:i:s');
+        
+        Kembali::insert($postData);
         //store status message
         Session::flash('msg', 'Data '. $comms[0]["nama_kamera"].'/'.$comms[0]["tipe_kamera"].' returned successfully!');
 

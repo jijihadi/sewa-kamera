@@ -110,6 +110,7 @@
 
                     <li class="list-group-item"><label for="name"><b>Denda Terlambat</b></label>
                         <input type="text" id="denda1" class="form-control" value="{{ $dendahari }}" readonly></li>
+                        <input type="hidden" id="kamera_id" name="kamera_id" class="form-control" value="{{ $sewa['kamera_id'] }}" readonly></li>
                     <li class="list-group-item"><label for="name"><b>Denda Lain-lain</b></label>
                         <input type="text" id="denda2" class="form-control" value="0">
                         <small class="text-secondary">*isi jika terjadi ketidak lengkapan dalam Pengembalian.</small>
