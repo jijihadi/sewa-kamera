@@ -75,6 +75,7 @@ class KembaliController extends Controller
         
         $postData = request()->except(['_token','kamera_id']);
         
+        $postData['denda'] = bilanganbulat($postData['denda']);
         $postData['waktu_kembali'] = date('Y-m-d H:i:s');
         $postData['created_at'] = date('Y-m-d H:i:s');
         

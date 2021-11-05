@@ -77,12 +77,14 @@
                                             </button>
                                         </a>                                            
                                         @endif
+                                        @if ($m->diambil!=1)
                                         <a onclick="return confirm('Hapus data sewa {{ namakamera($m->kamera_id) }}')"
                                             href="{{ route('sewa.delete', $m->id_sewa) }}">
                                             <button type="button" class="btn btn-outline-danger btn-icon">
                                                 <i class="link-icon" data-feather="trash"></i>
                                             </button>
                                         </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

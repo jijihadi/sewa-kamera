@@ -27,12 +27,13 @@
                 <li class="list-group-item"><b>Durasi</b> : {{ $sewa['durasi'] }} Jam</li>
                 <li class="list-group-item">
                     @php
-                        $deadline = date('Y-m-d H:i:s', strtotime($sewa['tanggal_sewa'])+60*60*$sewa['durasi'])
+                        $adds = "+".$sewa['durasi']." hours";
+                        $deadline = date('Y-m-d H:i:s', strtotime($sewa['tanggal_sewa'].$adds));
                     @endphp
                     <h6><b>Deadline Sewa</b> :
                         {{ tglindo($deadline) }}
                         Jam
-                        {{ date("H:i:s", strtotime($sewa['tanggal_sewa'])) }}
+                        {{ date("H:i:s", strtotime($deadline)) }}
                     </h6>
                 </li>
                 <li class="list-group-item"><b>Jaminan</b> :
@@ -86,9 +87,16 @@
                             $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $deadline);
 
                             $res = $to->diffInHours($from);
-                            $roundres = round($res/24);
+                            if ($res>1) {
+                                $roundres = 1;
+                            }elseif ($res>5) {
+                                $roundres = round($res/24);
+                            }elseif ($res<=1) {
+                                $roundres = 0;
+                            }
                             //
-                            $denda = $sewa['harga'] * .10;
+                            // $denda = $sewa['harga'] * .10;
+                            $denda = 10000;
 
                             $dendahari = $roundres * $denda;
 
