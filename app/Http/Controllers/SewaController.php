@@ -211,6 +211,6 @@ class SewaController extends Controller
         //store status message
         Session::flash('msg', 'Data deleted successfully!');
 
-        return redirect()->route('kamera');
+        return redirect()->route('sewa');
     }
 }
