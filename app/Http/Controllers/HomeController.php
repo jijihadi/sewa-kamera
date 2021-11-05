@@ -109,7 +109,7 @@ class HomeController extends Controller
         $postData = request()->except(['_token','jenis_jaminan', 'no_jaminan']);
         // 
         //dapetin id cust
-        $comm = Customer::where(['email_cust'=>Auth::user()->email])->toArray();
+        $comm = Customer::where(['email_cust'=>Auth::user()->email])->get()->toArray();
         // get id
         $idc = $comm[0]["id_cust"];
 
@@ -134,7 +134,7 @@ class HomeController extends Controller
     public function history()
     {
         //dapetin id cust
-        $comm = Customer::where(['email_cust'=>Auth::user()->email])->toArray();
+        $comm = Customer::where(['email_cust'=>Auth::user()->email])->get()->toArray();
         // get id
         $idc = $comm[0]["id_cust"];
         
@@ -146,7 +146,7 @@ class HomeController extends Controller
     public function profile()
     {
         //dapetin id cust
-        $comm = Customer::where(['email_cust'=>Auth::user()->email])->toArray();
+        $comm = Customer::where(['email_cust'=>Auth::user()->email])->get()->toArray();
         // get id
         $idc = $comm[0]["id_cust"];
         

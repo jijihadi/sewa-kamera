@@ -203,7 +203,7 @@ class SewaController extends Controller
         //dapetin id jaminan
         $comm = Sewa::find($id)->toArray();
         // cari id
-        $idj = $comm[0]["jaminan_id"];
+        $idj = $comm["jaminan_id"];
         // dd($idj);
         Jaminan::find($idj)->delete();
         // hapus kamera
