@@ -106,7 +106,7 @@
                             <div class="alert alert-warning" role="alert">
                                 <p>{{ namacust($sewa['cust_id']) }} Terlambat mengembalikan
                                     sewa selama {{ $res }} jam, dan dibulatkan menjadi {{ $roundres }} hari. Dan
-                                    akan dikenakan denda keterlambatan sejumlah 10% harga sewa perhari!</p>
+                                    akan dikenakan denda keterlambatan sejumlah Rp. 10.000 perhari!</p>
                             </div>
                         </li>
                     @endif
