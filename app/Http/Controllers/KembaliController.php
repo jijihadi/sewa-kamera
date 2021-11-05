@@ -62,9 +62,9 @@ class KembaliController extends Controller
         
         // cari id kamera
         $idk = $postData['kamera_id'];
-        $comms = Kamera::find($idk)->get()->toArray();
+        $comms = Kamera::find($idk)->toArray();
         // dapetin data stok
-        $stok = $comms[0]["stok"];
+        $stok = $comms["stok"];
         $postDatax['stok'] = intval($stok) + 1;
         // tambah stok kamera
         Kamera::find($idk)->update($postDatax);
@@ -80,7 +80,7 @@ class KembaliController extends Controller
         
         Kembali::insert($postData);
         //store status message
-        Session::flash('msg', 'Data '. $comms[0]["nama_kamera"].'/'.$comms[0]["tipe_kamera"].' returned successfully!');
+        Session::flash('msg', 'Data '. $comms["nama_kamera"].'/'.$comms["tipe_kamera"].' returned successfully!');
 
         return redirect()->route('sewa');
     }

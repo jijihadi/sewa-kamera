@@ -59,7 +59,7 @@ class HomeController extends Controller
     public function rent()
     {
         //dapetin id cust
-        $comm = Customer::where(['email_cust'=>Auth::user()->email])->get()->toArray();
+        $comm = Customer::where(['email_cust'=>Auth::user()->email])->toArray();
         // get id
         $idc = $comm[0]["id_cust"];
         
@@ -90,9 +90,9 @@ class HomeController extends Controller
         //get post data
         $postData = $request->all();
 
-        $comms = Kamera::find($postData['kamera_id'])->get()->toArray();
+        $comms = Kamera::find($postData['kamera_id'])->toArray();
         // cari id
-        $stok = $comms[0]["stok"];
+        $stok = $comms["stok"];
         $postDatax['stok'] = intval($stok) - 1;
         
         Kamera::find($postData['kamera_id'])->update($postDatax);
@@ -109,7 +109,7 @@ class HomeController extends Controller
         $postData = request()->except(['_token','jenis_jaminan', 'no_jaminan']);
         // 
         //dapetin id cust
-        $comm = Customer::where(['email_cust'=>Auth::user()->email])->get()->toArray();
+        $comm = Customer::where(['email_cust'=>Auth::user()->email])->toArray();
         // get id
         $idc = $comm[0]["id_cust"];
 
@@ -134,7 +134,7 @@ class HomeController extends Controller
     public function history()
     {
         //dapetin id cust
-        $comm = Customer::where(['email_cust'=>Auth::user()->email])->get()->toArray();
+        $comm = Customer::where(['email_cust'=>Auth::user()->email])->toArray();
         // get id
         $idc = $comm[0]["id_cust"];
         
@@ -146,7 +146,7 @@ class HomeController extends Controller
     public function profile()
     {
         //dapetin id cust
-        $comm = Customer::where(['email_cust'=>Auth::user()->email])->get()->toArray();
+        $comm = Customer::where(['email_cust'=>Auth::user()->email])->toArray();
         // get id
         $idc = $comm[0]["id_cust"];
         

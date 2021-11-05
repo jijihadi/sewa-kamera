@@ -152,7 +152,7 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         //dapetin id jaminan
-        $comm = Customer::find($id)->get()->toArray();
+        $comm = Customer::find($id)->toArray();
         // cari id
         $idj = $comm[0]["email_cust"];
         // dd($idj);

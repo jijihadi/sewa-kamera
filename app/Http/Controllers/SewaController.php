@@ -104,14 +104,15 @@ class SewaController extends Controller
         //get post data
         $postData = $request->all();
 
-        $comms = Kamera::find($postData['kamera_id'])->get()->toArray();
+        $comms = Kamera::find($postData['kamera_id'])->toArray();
         // cari id
-        $stok = $comms[0]["stok"];
+        $stok = $comms["stok"];
         $postDatax['stok'] = intval($stok) - 1;
         
         Kamera::find($postData['kamera_id'])->update($postDatax);
         
-        // 
+        // dd($comms);
+        // // 
         $postData2['jenis_jaminan'] = $postData['jenis_jaminan'];
         $postData2['no_jaminan'] = $postData['no_jaminan'];
         $postData2['created_at'] = date('Y-m-d H:i:s');
@@ -200,7 +201,7 @@ class SewaController extends Controller
     public function destroy($id)
     {
         //dapetin id jaminan
-        $comm = Sewa::find($id)->get()->toArray();
+        $comm = Sewa::find($id)->toArray();
         // cari id
         $idj = $comm[0]["jaminan_id"];
         // dd($idj);
