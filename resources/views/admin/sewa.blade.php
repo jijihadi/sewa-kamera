@@ -37,6 +37,7 @@
                                 <th>Durasi</th>
                                 <th>Customer</th>
                                 <th>Jaminan</th>
+                                <th>Kode1</th>
                                 <th>Harga</th>
                                 <th>Kasir</th>
                                 <th>Status</th>
@@ -50,12 +51,13 @@
                             @foreach($sewa as $m)
                                 <tr>
                                     <td>{{ @$loop->iteration }}</td>
-                                    <td>{{ tglindo($m->tanggal_pesan)}} Jam {{ date("H:i:s", strtotime($m->tanggal_pesan))}}</td>
+                                    <td>{{ date("d-m-Y", strtotime($m->tanggal_pesan))}} Jam {{ date("H:i:s", strtotime($m->tanggal_pesan))}}</td>
                                     <td>{{ namakamera($m->kamera_id)}}</td>
-                                    <td>{{ tglindo($m->tanggal_sewa) }} Jam {{ date("H:i:s", strtotime($m->tanggal_sewa))}}</td>
+                                    <td>{{ date("d-m-Y", strtotime($m->tanggal_sewa)) }} Jam {{ date("H:i:s", strtotime($m->tanggal_sewa))}}</td>
                                     <td>{{ $m->durasi}} Jam</td>
                                     <td>{{ namacust($m->cust_id)}}</td>
                                     <td>{!! namajaminan($m->jaminan_id)!!}</td>
+                                    <td>{!! kodejaminan($m->jaminan_id)!!}</td>
                                     <td>{{ rupiah($m->harga) }}</td>
                                     <td>{{ ($m->admin_id!="0")?namaadmin($m->admin_id) : "Belum diambil" }}</td>
                                     <td>{!! statusbadge($m->diambil) !!}</td>

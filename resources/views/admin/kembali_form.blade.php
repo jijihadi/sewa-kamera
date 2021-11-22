@@ -30,7 +30,7 @@
                         $adds = "+".$sewa['durasi']." hours";
                         $deadline = date('Y-m-d H:i:s', strtotime($sewa['tanggal_sewa'].$adds));
                     @endphp
-                    <h6><b>Deadline Sewa</b> :
+                    <h6><b>Waktu Pengembalian</b> :
                         {{ tglindo($deadline) }}
                         Jam
                         {{ date("H:i:s", strtotime($deadline)) }}
@@ -112,10 +112,15 @@
                     @endif
                     <li class="list-group-item">
                         <label for="name"><b>Catatan</b></label>
+                        <br>
                         <input type="hidden" name="sewa_id" value="{{$sewa['id_sewa']}}">
-                        <textarea name="catatan" class="form-control" id="exampleFormControlTextarea1"
-                            rows="5"></textarea>
-                        <small class="text-secondary">*pastikan untuk mengisi catatan.</small>
+                        {{-- <textarea name="catatan" class="form-control" id="exampleFormControlTextarea1"
+                            rows="5"></textarea> --}}
+                            <input type="checkbox" id="rusak" name="catatan" value="Kerusakan">
+                            <label for="vehicle1"> Kerusakan</label>
+                            <input type="checkbox" id="telat" name="catatan" value="Keterlambatan">
+                            <label for="vehicle1"> Keterlambatan</label>
+                        {{-- <small class="text-secondary">*pastikan untuk mengisi catatan.</small> --}}
                     </li>
 
                     <li class="list-group-item"><label for="name"><b>Denda Terlambat</b></label>

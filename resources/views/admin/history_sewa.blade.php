@@ -54,6 +54,7 @@
                                 <th>Kasir</th>
                                 <th>Tanggal Kembali</th>
                                 <th>Denda</th>
+                                <th>Catatan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,6 +69,7 @@
                                     <td>{{ namaadmin($m->admin_id) }}</td>
                                     <td>{{ tglindo($m->waktu_kembali) }}</td>
                                     <td>{{ viewdenda($m->sewa_id) }}</td>
+                                    <td>{{ catatandenda($m->sewa_id) }}</td>
 
                                 </tr>
                             @endforeach

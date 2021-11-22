@@ -406,13 +406,13 @@
                 var final ="";
                 switch (dur) {
                     case 6:
-                        final = parseInt(val) * 0.25;
+                        final = (parseInt(val) * 0.25) + 10000;
                         $("#currency").val(final);
                         console.log(val);       
                         console.log(final);       
                         break;
                     case 12:
-                        final = parseInt(val) * 0.5;
+                        final = (parseInt(val) * 0.5) + 10000;
                         $("#currency").val(final);
                         break;
                     case 24:

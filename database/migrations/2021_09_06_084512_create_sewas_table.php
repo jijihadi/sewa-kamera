@@ -23,7 +23,7 @@ class CreateSewasTable extends Migration
             $table->datetime('tanggal_sewa');
             $table->integer('durasi');
             $table->string('harga');
-            $table->text('catatan');
+            $table->text('catatan')->nullable()->change();
             $table->integer('diambil')->default('0');
             $table->timestamps();
         });

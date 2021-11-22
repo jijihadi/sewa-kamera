@@ -56,7 +56,7 @@ class SewaController extends Controller
         //
         DB::enableQueryLog();
 
-            $data = Sewa::join('pengembalians', 'sewas.id_sewa', 'pengembalians.sewa_id')->where('diambil', '3')->where(DB::raw('MONTH(tanggal_sewa)'), $month)->get();
+            $data = Sewa::join('pengembalians', 'sewas.id_sewa', 'pengembalians.sewa_id')->where('diambil', '3')->where(DB::raw('MONTH(tanggal_sewa)'), $month)->orderBy('tanggal_sewa', 'desc')->get();
 
 
         $quries = DB::getQueryLog();

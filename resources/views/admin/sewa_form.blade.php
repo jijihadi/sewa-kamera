@@ -123,7 +123,7 @@
                         </select>
                     </div>
                     <div class="form-group" id="harga">
-                        <label for="name">Harga Sewa</label>
+                        <label for="name">Durasi Sewa</label>
                         <div class="col-12 row">
                             <select class="select2 form-control col-6" id="durasi" name="durasi">
                                 <option value="-">Pilih Durasi </option>

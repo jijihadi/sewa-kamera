@@ -6,7 +6,7 @@ function statusbadge($ich){
             return '<span class="badge badge-danger">Belum</span>';
             break;
         case '1':
-            return '<span class="badge badge-success">Sudah</span>';
+            return '<span class="badge badge-success">Sedang disewa</span>';
             break;
         case '3':
             return '<span class="badge badge-primary">Selesai</span>';
@@ -27,9 +27,23 @@ function viewdenda($id)
         ->get()->toArray();
         // 
     if ($comm[0]->denda == "0") {
-        return "Tidak ada denda";
+        return "0";
     } else {
-        return $comm[0]->denda." karna ".$comm[0]->catatan;
+        return $comm[0]->denda;
+    }
+    
+}
+
+function catatandenda($id)
+{
+    $comm = DB::table("pengembalians")
+        ->where("sewa_id", $id) // Getting the Authenticated user id
+        ->get()->toArray();
+        // 
+    if ($comm[0]->denda == "0") {
+        return "";
+    } else {
+        return $comm[0]->catatan;
     }
     
 }
@@ -131,7 +145,16 @@ function namajaminan( $id)
         ->where("id_jaminan", $id) // Getting the Authenticated user id
         ->get()->toArray();
         // 
-    return strtoupper($comm[0]->jenis_jaminan)." dengan kode <span class='text-danger'><b>".$comm[0]->no_jaminan."</b></span>";
+    return strtoupper($comm[0]->jenis_jaminan);
+}
+
+function kodejaminan( $id)
+{
+    $comm = DB::table("jaminans")
+        ->where("id_jaminan", $id) // Getting the Authenticated user id
+        ->get()->toArray();
+        // 
+    return "<b>".$comm[0]->no_jaminan."</b>";
 }
 
 function isActive($path)

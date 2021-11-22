@@ -88,7 +88,7 @@
         </div>
     </div>
 </div> <!-- row --> --}}
-
+{{-- 
 <div class="row">
     <div class="col-lg-12 col-xl-12 stretch-card">
         <div class="card">
@@ -136,6 +136,6 @@
             </div>
         </div>
     </div>
-</div> <!-- row -->
+</div> <!-- row --> --}}
 
 @endsection

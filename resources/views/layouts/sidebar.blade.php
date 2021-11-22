@@ -20,29 +20,29 @@
                 <span class="link-title">Riwayat penyewaan</span>
             </a>
         </li>
-        <li class="nav-item nav-category">master data</li>
+        <li class="nav-item nav-category">Data data</li>
         <li class="nav-item" {{ isActive('kamera') }}>
             <a href="{{route('kamera')}}" class="nav-link">
                 <i class="link-icon" data-feather="camera"></i>
-                <span class="link-title">Master Kamera</span>
+                <span class="link-title">Data Kamera</span>
             </a>
         </li>
         <li class="nav-item">
             <a href="{{route('merk')}}" class="nav-link">
                 <i class="link-icon" data-feather="tag"></i>
-                <span class="link-title">Master Merk</span>
+                <span class="link-title">Data Merk</span>
             </a>
         </li>
         <li class="nav-item {{ isActive('customer') }}">
             <a href="{{route('customer')}}" class="nav-link">
                 <i class="link-icon" data-feather="user-check"></i>
-                <span class="link-title">Master Customer</span>
+                <span class="link-title">Data Customer</span>
             </a>
         </li>
         <li class="nav-item">
             <a href="{{route('user')}}" class="nav-link">
                 <i class="link-icon" data-feather="users"></i>
-                <span class="link-title">Master User</span>
+                <span class="link-title">Data User</span>
             </a>
         </li>
     </ul>

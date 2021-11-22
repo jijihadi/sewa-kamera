@@ -59,31 +59,38 @@
 
                 @if(Route::current()->getName()=='kamera.add')
                     <form class="cmxform" id="signupForm" method="post"
-                        action="{{ route('kamera.insert') }}" novalidate="novalidate" enctype="multipart/form-data" >
+                        action="{{ route('kamera.insert') }}" novalidate="novalidate"
+                        enctype="multipart/form-data">
                 @endif
                 @if(Route::current()->getName()=='kamera.edit')
                     <form class="cmxform" id="signupForm" method="post"
-                        action="{{ route('kamera.update', $id) }}" novalidate="novalidate" enctype="multipart/form-data" >
+                        action="{{ route('kamera.update', $id) }}" novalidate="novalidate"
+                        enctype="multipart/form-data">
                 @endif
                 {{ csrf_field() }}
 
                 <fieldset>
                     <div class="form-group">
-                        <img src="{{ url('file_upload/img')."/".$gambar}}" alt="" style="max-height:200px; max-width:100%">
-                        {{-- {{$gambar}} --}}
+                        <img src="{{ url('file_upload/img')."/".$gambar }}"
+                            alt="" style="max-height:200px; max-width:100%">
+                        {{-- {{$gambar }} --}}
                     </div>
                     <div class="form-group">
                         <label for="name">Nama Kamera</label>
-                        <input id="name" class="form-control" name="nama_kamera" type="text" value="{{ $nama }}">
+                        <input id="name" class="form-control" name="nama_kamera" type="text" value="{{ $nama }}" {!!
+                            (Route::current()->getName()=='kamera.edit')? "readonly":"" !!}>
                     </div>
                     <div class="form-group">
                         <label for="name">Merk Kamera</label>
-                        <select class="select2 form-control" name="merk_kamera">
+                        <select class="select2 form-control" name="merk_kamera" {!!
+                            (Route::current()->getName()=='kamera.edit')? "style='pointer-events:none' readonly ":"" !!}
+                            >
                             <option value="-">Pilih Merk Kamera
                             </option>
                             @foreach($merk as $m)
                                 <option value="{{ $m->id_merk }}" {{ selectsama($m->id_merk, $merks) }}>
-                                    {{ $m->nama_merk }}</option>
+                                    {{ $m->nama_merk }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -97,18 +104,39 @@
                         <input type="text" id="currency" class="form-control" name="harga_kamera" value="{{ $harga }}"
                             placeholder="Harga Kamera">
                     </div>
-                    <div class="form-group">
-                        <label for="name">Stok Kamera</label>
-                        <input type="text" class="form-control" name="stok" value="{{ $stok }}"
-                            placeholder="Jumlah stok awal kamera">
-                    </div>
+                    @if(Route::current()->getName()=='kamera.add')
+
+                        <div class="form-group">
+                            <label for="name">Stok Kamera</label>
+                            <input type="text" class="form-control" name="stok" value="{{ $stok }}"
+                                placeholder="Jumlah stok awal kamera">
+                        </div>
+                    @endif
+                    @if(Route::current()->getName()=='kamera.edit')
+                        <div class="form-group">
+                            <label for="name">Stok Utama</label>
+                            <input type="text" id="stok1" class="form-control" name="stok" value="{{ $stok }}" readonly>
+                            <br>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="name">Tambah Stok </label>
+                                    <input type="text" id="stokplus" class="form-control" name="stok" value="0">
+                                </div>
+                                <div class="col-6">
+                                    <label for="name">Kurangi Stok </label>
+                                    <input type="text" id="stokmin" class="form-control" name="stok" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <label for="name">Gambar Kamera</label>
                         <div class="custom-file">
                             <input id="profile_image" type="file" class="form-control" name="gambar">
                             @if(Route::current()->getName()=='kamera.edit')
-                                <small class="text-danger">*Jika tidak ingin merubah foto kosongkan field ini, 
-                                    <br> jika ingin merubah, pastikan file dengan jenis JPG/PNG dengan resolusi maks 4000x4000 px.</small>
+                                <small class="text-danger">*Jika tidak ingin merubah foto kosongkan field ini,
+                                    <br> jika ingin merubah, pastikan file dengan jenis JPG/PNG dengan resolusi maks
+                                    4000x4000 px.</small>
                             @endif
                         </div>
                     </div>
@@ -121,5 +149,27 @@
         </div>
     </div>
 </div> <!-- row -->
+@if(Route::current()->getName()=='kamera.edit')
 
+    <script src="{{ url('/') }}/admin-assets/vendors/core/core.js"></script>
+    <script>
+        // 
+        var stoktotal = parseInt($("#stok1").val());
+        var stokplus = parseInt($("#stokplus").val());
+        var stokmin = parseInt($("#stokmin").val());
+        // $("#stok1").val(stoktotal + stokplus - stokmin);
+
+        $("#stokplus").on("change", function () {
+            var stokplus = parseInt($("#stokplus").val());
+            $("#stok1").val(stoktotal + stokplus);
+            stoktotal = parseInt($("#stok1").val());
+        });
+        $("#stokmin").on("change", function () {
+            var stokmin = parseInt($("#stokmin").val());
+            $("#stok1").val(stoktotal - stokmin);
+            stoktotal = parseInt($("#stok1").val());    
+        });
+
+    </script>
+@endif
 @endsection
