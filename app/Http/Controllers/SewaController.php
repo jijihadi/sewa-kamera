@@ -13,6 +13,7 @@ use App\Models\Jaminan;
 use App\Models\User;
 use App\Models\Customer;
 use Session;
+use Redirect;
 
 class SewaController extends Controller
 {
@@ -35,9 +36,10 @@ class SewaController extends Controller
         DB::enableQueryLog();
         $comm = DB::table("sewas")
         ->select('*', DB::raw('tanggal_sewa + INTERVAL durasi HOUR as deadline'))
+        ->where('diambil', '1')
         ->where(DB::raw('MONTH(now())'), DB::raw('MONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
         ->where(DB::raw('DAYOFMONTH(now())'), DB::raw('DAYOFMONTH(tanggal_sewa + INTERVAL durasi HOUR)')) // Getting the Authenticated user id
-        ->whereBetween(DB::raw('HOUR(NOW())'), [DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi-2) HOUR)'), DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi+1) MINUTE)')])
+        ->whereBetween(DB::raw('HOUR(NOW())'), [DB::raw('HOUR(tanggal_sewa + INTERVAL (durasi-2) HOUR)'), DB::raw('HOUR(tanggal_sewa + INTERVAL durasi HOUR)')])
         ->get()->toarray();
         // 
         $quries = DB::getQueryLog();
@@ -101,38 +103,90 @@ class SewaController extends Controller
             'no_jaminan' => ['required', 'string'],
         ]);
 
+        
         //get post data
         $postData = $request->all();
-
-        $comms = Kamera::find($postData['kamera_id'])->toArray();
-        // cari id
-        $stok = $comms["stok"];
-        $postDatax['stok'] = intval($stok) - 1;
         
-        Kamera::find($postData['kamera_id'])->update($postDatax);
+        DB::beginTransaction();
         
-        // dd($comms);
-        // // 
-        $postData2['jenis_jaminan'] = $postData['jenis_jaminan'];
-        $postData2['no_jaminan'] = $postData['no_jaminan'];
-        $postData2['created_at'] = date('Y-m-d H:i:s');
-
-        Jaminan::insert($postData2);
-        $id = DB::getPdo()->lastInsertId();
-        // dd($id);
-        // 
-        $jam = date("H:i:s", strtotime($postData['waktu_sewa'].":00"));
-        $postData = request()->except(['_token','jenis_jaminan', 'no_jaminan', 'waktu_sewa']);
-        // 
-        $postData['jaminan_id'] = $id;
-        $postData['tanggal_sewa'] = date("Y-m-d H:i:s", strtotime($postData['tanggal_sewa']." ".$jam));;
-        $postData['tanggal_pesan'] = date('Y-m-d H:i:s');
-        $postData['harga'] = bilanganbulat($postData['harga']);
-        $postData['created_at'] = date('Y-m-d H:i:s');
+        try {
+            $comms = Kamera::find($postData['kamera_id'])->toArray();
+            // cari id
+            $stok = $comms["stok"];
+            $postDatax['stok'] = intval($stok) - 1;
+            
+            Kamera::find($postData['kamera_id'])->update($postDatax);
+        } catch(ValidationException $e)
+        {
+            // Rollback and then redirect
+            // back to form with errors
+            DB::rollback();
+            return Redirect::to(route('sewa'))
+                ->withErrors( $e->getErrors() )
+                ->withInput();
+        } catch(\Exception $e)
+        {
+            DB::rollback();
+            throw $e;
+        }
         
-        //insert post data
-        Sewa::insert($postData);
+        
+        try {
+            $postData2['jenis_jaminan'] = $postData['jenis_jaminan'];
+            $postData2['no_jaminan'] = $postData['no_jaminan'];
+            $postData2['created_at'] = date('Y-m-d H:i:s');
 
+            Jaminan::insert($postData2);
+            $id = DB::getPdo()->lastInsertId();
+        } catch(ValidationException $e)
+        {
+            // Rollback and then redirect
+            // back to form with errors
+            DB::rollback();
+            return Redirect::to(route('sewa'))
+                ->withErrors( $e->getErrors() )
+                ->withInput();
+        } catch(\Exception $e)
+        {
+            DB::rollback();
+            throw $e;
+        }
+        
+        
+        try {
+            $jam = date("H:i:s", strtotime($postData['waktu_sewa'].":00"));
+            $postData = request()->except(['_token','jenis_jaminan', 'no_jaminan', 'waktu_sewa']);
+            // 
+            $postData['jaminan_id'] = $id;
+            $postData['tanggal_sewa'] = date("Y-m-d H:i:s", strtotime($postData['tanggal_sewa']." ".$jam));;
+            $postData['tanggal_pesan'] = date('Y-m-d H:i:s');
+            $postData['harga'] = bilanganbulat($postData['harga']);
+            $postData['created_at'] = date('Y-m-d H:i:s');
+            
+
+            if ($postData['tanggal_sewa']< $postData['created_at']) {
+                
+                Session::flash('err', 'Terjadi kesalahan tanggal sewa tidak valid');
+                return redirect()->route('sewa');
+            }
+            //insert post data
+            Sewa::insert($postData);
+        } catch(ValidationException $e)
+        {
+            // Rollback and then redirect
+            // back to form with errors
+            DB::rollback();
+            return Redirect::to(route('sewa'))
+                ->withErrors( $e->getErrors() )
+                ->withInput();
+        } catch(\Exception $e)
+        {
+            DB::rollback();
+            throw $e;
+        }
+        
+
+        DB::commit();
         //store status message
         Session::flash('msg', 'Data '. tglindo($postData["tanggal_sewa"]). " ". namakamera($postData["kamera_id"]).' made successfully!');
         
