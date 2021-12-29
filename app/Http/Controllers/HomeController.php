@@ -59,9 +59,11 @@ class HomeController extends Controller
     public function rent()
     {
         //dapetin id cust
-        $comm = Customer::where(['email_cust'=>Auth::user()->email])->toArray();
+        // print_r(Auth::user()->email);
+        $comm = Customer::where(['email_cust'=>Auth::user()->email])->get()->toArray();
         // get id
-        $idc = $comm[0]["id_cust"];
+        $idc = $comm[0]['id_cust'];
+        // dd($idc);
         
         $data = Sewa::where(['cust_id'=>$idc])->where('diambil', '!=', '3')->get();
 

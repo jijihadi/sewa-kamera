@@ -381,7 +381,6 @@
             </div>
 
             <div class="p-t-40">
-                <p class="text-warning txt-center"> Full paid to remove this karna saya trauma dighosting</p>
 
                 <p class="stext-107 cl6 txt-center">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->

@@ -121,9 +121,8 @@ class SewaController extends Controller
             // Rollback and then redirect
             // back to form with errors
             DB::rollback();
-            return Redirect::to(route('sewa'))
-                ->withErrors( $e->getErrors() )
-                ->withInput();
+            Session::flash('msg', 'Ada kesalahan pada data kamera, Pastikan data benar!');
+            return Redirect::to(route('sewa'));
         } catch(\Exception $e)
         {
             DB::rollback();
@@ -143,9 +142,8 @@ class SewaController extends Controller
             // Rollback and then redirect
             // back to form with errors
             DB::rollback();
-            return Redirect::to(route('sewa'))
-                ->withErrors( $e->getErrors() )
-                ->withInput();
+            Session::flash('msg', 'Ada kesalahan saat pilih Jaminan, Pastikan data benar!');
+            return Redirect::to(route('sewa'));
         } catch(\Exception $e)
         {
             DB::rollback();
@@ -166,7 +164,7 @@ class SewaController extends Controller
 
             if ($postData['tanggal_sewa']< $postData['created_at']) {
                 
-                Session::flash('err', 'Terjadi kesalahan tanggal sewa tidak valid');
+                Session::flash('msg', 'Terjadi kesalahan tanggal sewa tidak valid');
                 return redirect()->route('sewa');
             }
             //insert post data
@@ -176,9 +174,9 @@ class SewaController extends Controller
             // Rollback and then redirect
             // back to form with errors
             DB::rollback();
-            return Redirect::to(route('sewa'))
-                ->withErrors( $e->getErrors() )
-                ->withInput();
+            return Redirect::to(route('sewa'));
+            Session::flash('msg', 'Ada kesalahan saat input data, Pastikan data benar!');
+            return Redirect::to(route('sewa'));
         } catch(\Exception $e)
         {
             DB::rollback();

@@ -87,7 +87,7 @@
                             $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $deadline);
 
                             $res = $to->diffInHours($from);
-                            if ($res>1) {
+                            if ($res>1 && $res<=2) {
                                 $roundres = 1;
                             }elseif ($res>5) {
                                 $roundres = round($res/24);

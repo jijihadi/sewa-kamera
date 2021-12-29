@@ -20,7 +20,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $last10 = Sewa::orderBy('tanggal_pesan', 'desc')->limit('10')->get();
+        // $last10 = Sewa::orderBy('tanggal_pesan', 'desc')->limit('10')->get();
         // dd($last10);
         //
         // $trent = Sewa::all()->where(['diambil'=>'2'])->count();
@@ -37,8 +37,10 @@ class AdminController extends Controller
         // $mostloyal = namacust($mostloyal[0]);
         // // dd($mostloyal);
         // $data =  ['tall'=> $tall, 'trent'=>$trent, 'tcust'=>$tcust, 'mostrent'=>$mostrent, 'newrent'=>$newrent, 'mostloyal'=>$mostloyal, 'last10'=>$last10];
-        $data =  ['last10'=>$last10];
-        return view('admin/index',$data);
+        // $data =  ['last10'=>$last10];
+        // return view('admin/index',$data);
+        header('Location: '.route('sewa'));
+        exit;
     }
 
     /**

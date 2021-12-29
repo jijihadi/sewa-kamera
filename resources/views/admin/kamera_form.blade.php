@@ -114,17 +114,17 @@
                     @endif
                     @if(Route::current()->getName()=='kamera.edit')
                         <div class="form-group">
-                            <label for="name">Stok Utama</label>
+                            <label for="name">Stok Sisa</label>
                             <input type="text" id="stok1" class="form-control" name="stok" value="{{ $stok }}" readonly>
                             <br>
                             <div class="row">
                                 <div class="col-6">
                                     <label for="name">Tambah Stok </label>
-                                    <input type="text" id="stokplus" class="form-control" name="stok" value="0">
+                                    <input type="text" id="stokplus" class="form-control" value="0">
                                 </div>
                                 <div class="col-6">
                                     <label for="name">Kurangi Stok </label>
-                                    <input type="text" id="stokmin" class="form-control" name="stok" value="0">
+                                    <input type="text" id="stokmin" class="form-control" value="0">
                                 </div>
                             </div>
                         </div>
