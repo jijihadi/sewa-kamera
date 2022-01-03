@@ -173,7 +173,7 @@
         $("#stokmin").on("change", function () {
             var stokmin = parseInt($("#stokmin").val());
             $("#stok1").val(stoktotal - stokmin);
-            $("#stok2").val(stoksisa + stokplus);
+            $("#stok2").val(stoksisa - stokmin);
             stoktotal = parseInt($("#stok1").val());  
             stoksisa = parseInt($("#stok2").val());
         });

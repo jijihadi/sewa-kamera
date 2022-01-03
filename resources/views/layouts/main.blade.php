@@ -613,10 +613,10 @@
 
             // custom stuff
             var val = ""
-            $("#select22").on("change", function () {
+            // $("#select22").on("change", function () {
                 // hitung harga
                 val = $(this).find('option:selected').data("harga");
-            });
+            // });
             $("#durasi").on("change", function () {
                 var dur = parseInt($(this).find('option:selected').val());
                 var final ="";
