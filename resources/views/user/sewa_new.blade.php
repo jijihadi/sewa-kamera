@@ -54,9 +54,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">Kamera</label>
-                                <select class="select2 form-control col-12" name="kamera_id" id="select22">
+                                <select class="select2 form-control col-12" name="kamera_id" id="select22" >
                                     <option value="-">Pilih Produk </option> @foreach ($kamera as $j) <option
-                                        value="{{ $j->id_kamera }}" data-harga="{{ $j->harga_kamera }}">
+                                        value="{{ $j->id_kamera }}" data-harga="{{ $j->harga_kamera }}" {{(Request::segment(3)==$j->id_kamera) ? 'selected' : '';}}>
                                         {{ $j->nama_kamera."/".$j->tipe_kamera }}</option>
                                     @endforeach
                                 </select>

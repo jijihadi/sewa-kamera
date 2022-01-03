@@ -32,6 +32,7 @@
                                 <th>#</th>
                                 <th>Nama Kamera</th>
                                 <th>Merk/Tipe</th>
+                                <th>Stok Awal</th>
                                 <th>Sisa Stok</th>
                                 <th>Harga</th>
                                 <th>Gambar</th>
@@ -44,6 +45,7 @@
                                     <td>{{ @$loop->iteration }}</td>
                                     <td>{{ $m->nama_kamera }}</td>
                                     <td>{{ namamerk($m->merk_kamera) ."/". $m->tipe_kamera }}</td>
+                                    <td>{{ stokrent($m->id_kamera) + $m->stok }}</td>
                                     <td>{{ $m->stok }}</td>
                                     <td>{{ rupiah($m->harga_kamera) }}</td>
                                     <td>{{ $m->gambar_kamera }}</td>

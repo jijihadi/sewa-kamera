@@ -34,6 +34,20 @@ function viewdenda($id)
     
 }
 
+function stokrent($id)
+{
+    $comm = DB::table("sewas")
+        ->where("kamera_id", $id) // Getting the Authenticated user id
+        ->get();
+        // 
+    if (count($comm) == "0") {
+        return "0";
+    } else {
+        return count($comm);
+    }
+    
+}
+
 function catatandenda($id)
 {
     $comm = DB::table("pengembalians")

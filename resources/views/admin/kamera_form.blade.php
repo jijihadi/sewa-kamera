@@ -19,6 +19,7 @@
             $tipe = $post->tipe_kamera;
             $merks = $post->merk_kamera;
             $harga = $post->harga_kamera;
+            $stokall = stokrent($post->id_kamera) + $post->stok;
             $stok = $post->stok;
             $gambar = $post->gambar;
         @endphp
@@ -114,8 +115,10 @@
                     @endif
                     @if(Route::current()->getName()=='kamera.edit')
                         <div class="form-group">
+                            <label for="name">Stok Semua</label>
+                            <input type="text" id="stok1" class="form-control" name="stok" value="{{ $stokall }}" readonly>
                             <label for="name">Stok Sisa</label>
-                            <input type="text" id="stok1" class="form-control" name="stok" value="{{ $stok }}" readonly>
+                            <input type="text" id="stok2" class="form-control" value="{{ $stok }}" readonly>
                             <br>
                             <div class="row">
                                 <div class="col-6">
@@ -155,6 +158,7 @@
     <script>
         // 
         var stoktotal = parseInt($("#stok1").val());
+        var stoksisa = parseInt($("#stok2").val());
         var stokplus = parseInt($("#stokplus").val());
         var stokmin = parseInt($("#stokmin").val());
         // $("#stok1").val(stoktotal + stokplus - stokmin);
@@ -162,12 +166,16 @@
         $("#stokplus").on("change", function () {
             var stokplus = parseInt($("#stokplus").val());
             $("#stok1").val(stoktotal + stokplus);
+            $("#stok2").val(stoksisa + stokplus);
             stoktotal = parseInt($("#stok1").val());
+            stoksisa = parseInt($("#stok2").val());
         });
         $("#stokmin").on("change", function () {
             var stokmin = parseInt($("#stokmin").val());
             $("#stok1").val(stoktotal - stokmin);
-            stoktotal = parseInt($("#stok1").val());    
+            $("#stok2").val(stoksisa + stokplus);
+            stoktotal = parseInt($("#stok1").val());  
+            stoksisa = parseInt($("#stok2").val());
         });
 
     </script>
