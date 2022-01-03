@@ -1,12 +1,12 @@
 <div class="sidebar-body">
     <ul class="nav">
-        <li class="nav-item nav-category">Main</li>
+        <!-- <li class="nav-item nav-category">Main</li>
         <li class="nav-item {{ isActive('dashboard') }}">
             <a href="{{ route('admin.dashboard') }}" class="nav-link">
                 <i class="link-icon" data-feather="box"></i>
                 <span class="link-title">Dashboard</span>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item nav-category">penyewaan</li>
         <li class="nav-item">
             <a href="{{route('sewa')}}" class="nav-link">

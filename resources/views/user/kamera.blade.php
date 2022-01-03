@@ -26,7 +26,7 @@
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-							<img src="{{ url('file_upload/img')."/".$k->gambar}}" alt="" style="max-height:100%; max-width:100%"  alt="IMG-PRODUCT">
+							<img src="{{ url('file_upload/img')."/".$k->gambar}}" alt="" style="max-height:300px; max-width:100%"  alt="IMG-PRODUCT">
                         </div>
 
                         <div class="block2-txt flex-w flex-t p-t-14">
