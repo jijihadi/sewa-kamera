@@ -32,8 +32,8 @@
                                 <th>#</th>
                                 <th>Nama Kamera</th>
                                 <th>Merk/Tipe</th>
-                                <th>Stok Awal</th>
-                                <th>Sisa Stok</th>
+                                <th>Stok</th>
+                                <th>Ready</th>
                                 <th>Harga</th>
                                 <th>Gambar</th>
                                 <th>#</th>

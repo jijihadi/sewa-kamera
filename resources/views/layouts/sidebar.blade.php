@@ -24,7 +24,7 @@
         <li class="nav-item" {{ isActive('kamera') }}>
             <a href="{{route('kamera')}}" class="nav-link">
                 <i class="link-icon" data-feather="camera"></i>
-                <span class="link-title">Data Kamera</span>
+                <span class="link-title">Data Produk</span>
             </a>
         </li>
         <li class="nav-item">

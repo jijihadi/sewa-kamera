@@ -37,7 +37,8 @@ function viewdenda($id)
 function stokrent($id)
 {
     $comm = DB::table("sewas")
-        ->where("kamera_id", $id) // Getting the Authenticated user id
+        ->where("kamera_id", $id)
+        ->where("diambil",1) // Getting the Authenticated user id
         ->get();
         // 
     if (count($comm) == "0") {
