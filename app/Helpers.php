@@ -38,7 +38,7 @@ function stokrent($id)
 {
     $comm = DB::table("sewas")
         ->where("kamera_id", $id)
-        ->where("diambil",1) // Getting the Authenticated user id
+        ->where("diambil", 'not like',3) // Getting the Authenticated user id
         ->get();
         // 
     if (count($comm) == "0") {

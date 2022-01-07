@@ -10,6 +10,7 @@
     $harga = "";
     $stok = "";
     $gambar = "";
+    $deskripsi = "";
 @endphp
 @if(!empty($post))
     @foreach($post as $p )
@@ -22,6 +23,7 @@
             $stokall = stokrent($post->id_kamera) + $post->stok;
             $stok = $post->stok;
             $gambar = $post->gambar;
+            $deskripsi = $post->deskripsi;
         @endphp
     @endforeach
 @endif
@@ -30,7 +32,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-header row">
-                <h6 class="col-6"><i class="link-icon" data-feather="tag"></i> Form Kamera</h6>
+                <h6 class="col-6"><i class="link-icon" data-feather="tag"></i> Form Produk</h6>
 
             </div>
             <div class="card-body">
@@ -77,16 +79,16 @@
                         {{-- {{$gambar }} --}}
                     </div>
                     <div class="form-group">
-                        <label for="name">Nama Kamera</label>
+                        <label for="name">Nama Produk</label>
                         <input id="name" class="form-control" name="nama_kamera" type="text" value="{{ $nama }}" {!!
                             (Route::current()->getName()=='kamera.edit')? "readonly":"" !!}>
                     </div>
                     <div class="form-group">
-                        <label for="name">Merk Kamera</label>
+                        <label for="name">Merk Produk</label>
                         <select class="select2 form-control" name="merk_kamera" {!!
                             (Route::current()->getName()=='kamera.edit')? "style='pointer-events:none' readonly ":"" !!}
                             >
-                            <option value="-">Pilih Merk Kamera
+                            <option value="-">Pilih Merk Produk
                             </option>
                             @foreach($merk as $m)
                                 <option value="{{ $m->id_merk }}" {{ selectsama($m->id_merk, $merks) }}>
@@ -96,19 +98,19 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">Tipe Kamera</label>
+                        <label for="name">Tipe Produk</label>
                         <input id="name" class="form-control" name="tipe_kamera" type="text" value="{{ $tipe }}"
                             placeholder="ex: 200D, XT-1, a7 Mark III">
                     </div>
                     <div class="form-group">
-                        <label for="name">Harga Kamera</label>
+                        <label for="name">Harga Produk</label>
                         <input type="text" id="currency" class="form-control" name="harga_kamera" value="{{ $harga }}"
-                            placeholder="Harga Kamera">
+                            placeholder="Harga Produk">
                     </div>
                     @if(Route::current()->getName()=='kamera.add')
 
                         <div class="form-group">
-                            <label for="name">Stok Kamera</label>
+                            <label for="name">Stok Produk</label>
                             <input type="text" class="form-control" name="stok" value="{{ $stok }}"
                                 placeholder="Jumlah stok awal kamera">
                         </div>
@@ -133,7 +135,12 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <label for="name">Gambar Kamera</label>
+                        <label for="name">Deskripsi</label>
+                            <textarea name="deskripsi" class="form-control" id="exampleFormControlTextarea1"
+                                   rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Gambar Produk</label>
                         <div class="custom-file">
                             <input id="profile_image" type="file" class="form-control" name="gambar">
                             @if(Route::current()->getName()=='kamera.edit')

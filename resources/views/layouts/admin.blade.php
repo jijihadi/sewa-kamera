@@ -386,8 +386,8 @@
             $('.timepicker').timepicker({
                 timeFormat: 'HH:mm',
                 interval: 60,
-                minTime: '00',
-                maxTime: '23:00',
+                minTime: '08:00',
+                maxTime: '20:00',
                 defaultTime: '24',
                 startTime: '00:00',
                 dynamic: false,

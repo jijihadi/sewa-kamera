@@ -121,7 +121,7 @@
                             @guest
                             @else
                                 <li @if(Request::segment(1)=='rent' ) class="active-menu" @endif>
-                                    <a href="{{ route('rent') }}">Penyewaan</a>
+                                    <a href="{{ route('rent') }}">Aktifitas Sewa</a>
                                 </li>
 
                                 <li @if(Request::segment(1)=='history' ) class="active-menu" @endif>
@@ -586,11 +586,12 @@
     
     <script type="text/javascript">
         $(".form_datetime").datetimepicker({
-            format: "yyyy-mm-dd HH:ii:ss",
+            format: "yyyy-mm-dd HH:ii",
             autoclose: true,
             todayBtn: true,
-            startDate: "2021-01-01 00:00",
-            minuteStep: 10
+            startDate: "2022-01-01 00:00",
+            setDaysOfWeekDisabled: ['0','6'],
+            minuteStep: 30
         });
     </script>    
 

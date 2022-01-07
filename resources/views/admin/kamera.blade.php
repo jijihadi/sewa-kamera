@@ -6,7 +6,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-header row">
-                <h6 class="col-6"><i class="link-icon" data-feather="camera"></i> Data Kamera</h6>
+                <h6 class="col-6"><i class="link-icon" data-feather="camera"></i> Data Produk</h6>
                 <a href="{{ route('kamera.add') }}" class="col-6 text-right">
                     <button type="button" class="btn btn-primary btn-sm btn-icon-text mb-1 mb-md-0">
                         Tambah <i class="link-icon" data-feather="plus"></i>
@@ -30,7 +30,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nama Kamera</th>
+                                <th>Nama Produk</th>
                                 <th>Merk/Tipe</th>
                                 <th>Stok</th>
                                 <th>Ready</th>

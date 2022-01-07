@@ -83,7 +83,7 @@ class HomeController extends Controller
         $this->validate($request, [
             'tanggal_sewa' => ['required', 'string', 'max:255'],
             'kamera_id' => ['required', 'integer'],
-            'harga' => ['required'],
+            // 'durasi' => ['required'],
             'durasi' => ['required'],
             'jenis_jaminan' => ['required', 'string'],
             'no_jaminan' => ['required', 'string'],

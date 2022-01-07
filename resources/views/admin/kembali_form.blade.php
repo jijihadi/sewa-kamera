@@ -116,9 +116,9 @@
                         <input type="hidden" name="sewa_id" value="{{$sewa['id_sewa']}}">
                         {{-- <textarea name="catatan" class="form-control" id="exampleFormControlTextarea1"
                             rows="5"></textarea> --}}
-                            <input type="checkbox" id="rusak" name="catatan" value="Kerusakan">
+                            <input type="checkbox" id="rusak" name="catatan1" value="Kerusakan">
                             <label for="vehicle1"> Kerusakan</label>
-                            <input type="checkbox" id="telat" name="catatan" value="Keterlambatan">
+                            <input type="checkbox" id="telat" name="catatan2" value="Keterlambatan">
                             <label for="vehicle1"> Keterlambatan</label>
                         {{-- <small class="text-secondary">*pastikan untuk mengisi catatan.</small> --}}
                     </li>

@@ -54,9 +54,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">Kamera</label>
-                                <select class="select2 form-control col-12" name="kamera_id" id="select22" >
+                                <style>
+                                    #select22{
+                                        pointer-events: none;
+                                    }
+                                </style>
+                                <select class="select2 form-control col-12" name="kamera_id" id="select22" readonly>
                                     <option value="-">Pilih Produk </option> @foreach ($kamera as $j) <option
-                                        value="{{ $j->id_kamera }}" data-harga="{{ $j->harga_kamera }}" {{(Request::segment(3)==$j->id_kamera) ? 'selected' : '';}}>
+                                        value="{{ $j->id_kamera }}" data-harga="{{ $j->harga_kamera }}" {{(Request::segment(3)==$j->id_kamera) ? 'selected' : 'disabled';}}>
                                         {{ $j->nama_kamera."/".$j->tipe_kamera }}</option>
                                     @endforeach
                                 </select>

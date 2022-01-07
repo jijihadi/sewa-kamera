@@ -72,8 +72,15 @@ class KembaliController extends Controller
         $postDatay['diambil'] = '3';
         // ubah status sewa
         Sewa::find($postData['sewa_id'])->update($postDatay);
-        
-        $postData = request()->except(['_token','kamera_id']);
+        if ($postData['catatan1']!="" && $postData['catatan2']!="") {
+            $postData['catatan']="Ada Kerusakan dan Bagian Hilang";
+        }
+        elseif ($postData['catatan1']!="" && $postData['catatan2']=="") {
+            $postData['catatan']="Ada Kerusakan";
+        }elseif ($postData['catatan1']=="" && $postData['catatan2']!="") {
+            $postData['catatan']="Ada Kehilangan";
+        }
+        $postData = request()->except(['_token','kamera_id', 'catatan1', 'catatan2']);
         
         $postData['denda'] = bilanganbulat($postData['denda']);
         $postData['waktu_kembali'] = date('Y-m-d H:i:s');

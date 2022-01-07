@@ -42,6 +42,9 @@
                     <p class="stext-102 cl3 p-t-23">
                         Sisa stok: {{ $kamera->stok }}
                     </p>
+                    <p class="stext-102 cl3 p-t-23">
+                        Deskripsi: {{$kamera->deskripsi}}
+                    </p>
 
                     <!--  -->
                     <div class="p-t-33">

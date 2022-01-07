@@ -19,7 +19,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-header row">
-                <h6 class="col-6"><i class="link-icon" data-feather="tag"></i> Form Merk</h6>
+                <h6 class="col-6"><i class="link-icon" data-feather="tag"></i> Form Kategori</h6>
 
             </div>
             <div class="card-body">
@@ -56,7 +56,7 @@
                 {{ csrf_field() }}
                 <fieldset>
                     <div class="form-group">
-                        <label for="name">Nama Merk</label>
+                        <label for="name">Nama Kategori</label>
                         <input id="name" class="form-control" name="nama_merk" type="text" value="{{ $nama }}">
                     </div>
                     <div class="form-group">

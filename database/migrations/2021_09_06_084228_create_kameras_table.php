@@ -20,6 +20,7 @@ class CreateKamerasTable extends Migration
             $table->string('merk_kamera');
             $table->string('harga_kamera');
             $table->integer('stok');
+            $table->string('deskripsi')->nullable();
             $table->string('gambar')->nullable();
             $table->timestamps();
         });
