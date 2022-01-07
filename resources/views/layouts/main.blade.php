@@ -590,7 +590,7 @@
             autoclose: true,
             todayBtn: true,
             startDate: "2022-01-01 00:00",
-            setDaysOfWeekDisabled: "8.00",
+            hoursDisabled: '0,1,2,3,4,5,6,7,21,22,23',
             minuteStep: 30
         });
     </script>    
