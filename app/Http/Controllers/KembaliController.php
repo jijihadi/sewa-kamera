@@ -76,7 +76,11 @@ class KembaliController extends Controller
         
         $postData = request()->except(['_token','kamera_id']);
         
-        $postData['catatan'] = implode(", ",$postData['catatan']);
+        if ( array_key_exists('catatan', $postData)) {  
+            $postData['catatan'] = implode(", ",$postData['catatan']);
+        }else{
+            $postData['catatan'] = "Lengkap";
+        }
         $postData['denda'] = bilanganbulat($postData['denda']);
         $postData['waktu_kembali'] = date('Y-m-d H:i:s');
         $postData['created_at'] = date('Y-m-d H:i:s');
