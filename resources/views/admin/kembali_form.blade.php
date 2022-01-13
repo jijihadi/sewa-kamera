@@ -87,13 +87,18 @@
                             $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $deadline);
 
                             $res = $to->diffInHours($from);
-                            if ($res>1 && $res<=2) {
+                            if (intval($res)==2) {
                                 $roundres = 1;
-                            }elseif ($res>5) {
-                                $roundres = round($res/24);
-                            }elseif ($res<=1) {
+                            }elseif (intval($res)==1) {
                                 $roundres = 0;
+                            }elseif ($res>2 && $res<25) {
+                                $roundres = 1;
+                            }elseif ($res>24 && $res<64) {
+                                $roundres = 2;
+                            }elseif (intval($res)>24) {
+                                $roundres = round($res/24);
                             }
+                            // dd($roundres);
                             //
                             // $denda = $sewa['harga'] * .10;
                             $denda = 10000;
