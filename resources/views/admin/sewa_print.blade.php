@@ -32,7 +32,10 @@
 <table>
     <thead>
         <tr>
-            <th colspan="8">
+            <th colspan="2">
+                <img src="{{ public_path('admin-assets/images/Logo-sj.png') }}" style="width: 100px; height: 100px">
+            </th>
+            <th colspan="6">
 
                 <h2>
                     Data Penyewaan Studio Jalanan <br>
