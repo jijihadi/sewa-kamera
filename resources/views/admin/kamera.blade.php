@@ -48,7 +48,7 @@
                                     <td>{{ stokrent($m->id_kamera) + $m->stok }}</td>
                                     <td>{{ $m->stok }}</td>
                                     <td>{{ rupiah($m->harga_kamera) }}</td>
-                                    <td><img src="{{ url('file_upload/img')."/".$m->gambar}}">
+                                    <td><img src="{{ url('file_upload/img')."/".$m->gambar}}" style="max-height:200px; max-width:100%">
                                     </td>
                                     <td>
                                         <a href="{{ route('kamera.edit', $m->id_kamera) }}">
