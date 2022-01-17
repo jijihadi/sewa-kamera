@@ -54,7 +54,10 @@ class KameraController extends Controller
             'merk_kamera' => ['required', 'integer'],
             'harga_kamera' => ['required'],
             'stok' => ['required', 'integer'],
+        ],
+            ['required' => 'Tolong isi dan lengkapi semua data'
         ]);
+        
 
         //get post data
         $postData = $request->all();

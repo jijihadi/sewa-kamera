@@ -70,7 +70,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#" style="color: #CE314C">{{ ucwords(Request::segment(1)) }}</a></li>
-                                <li class="breadcrumb-item @if(Request::segment(3) == '')active @endif"><a>{{ ucwords(Request::segment(2)) }}</a></li>
+                                <li class="breadcrumb-item @if(Request::segment(3) == '')active @endif"><a>{{ (Request::segment(2)!="kamera")?ucwords(Request::segment(2):"Produk") }}</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     {{ ucwords(Request::segment(3)) }}</li>
                             </ol>
